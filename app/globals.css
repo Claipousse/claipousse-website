@@ -2,19 +2,48 @@
 
 @theme inline {
   --color-dark-gray: #424242;
-  --color-accent-green: #1a9e16ff;
-  --color-light-gray: #a3a3a3;
+  --color-gray-light: #a4a4a4;
+  --color-light-gray: #cecece;
+  --color-white: #fff;
+  --color-black: #171717;
+  --color-accent: #4163e4; /*blue*/
+
+  /*flat design shadows*/
+  --shadow-flat: 0px 5px 0px rgba(0, 0, 0, 0.15);
+  --shadow-flat-hover: 0px 8px 2px rgba(0, 0, 0, 0.15);
+
+  --font-body: "Zen Kaku Gothic New", "sans-serif"; /*font*/
 }
 
 * {
-  box-shadow: none !important;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
 }
 
 body {
-  background-color: #ffffff;
-  color: #424242;
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-white);
+  color: var(--color-dark-gray);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animation bobbing pour les éléments */
+@keyframes bobbing {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bobbing {
+  animation: bobbing 2s ease-in-out infinite;
+}
+
+/* Transition douce pour les hover */
+.transition-flat {
+  transition: all 0.2s ease-in-out;
 }
