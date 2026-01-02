@@ -3,6 +3,7 @@
 @theme inline {
   --color-dark-gray: #424242;
   --color-accent-green: #1a9e16ff;
+  --color-light-gray: #a3a3a3;
 }
 
 * {
