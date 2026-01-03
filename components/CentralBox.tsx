@@ -14,7 +14,7 @@ export default function CentralBox() {
     //animated omori background
     <div className="min-h-screen flex items-center justify-center p-8 relative overflow-hidden">
       <div className="fixed inset-0 z-0">
-        <Image src="/images/background.webp" alt="background" fill className="object-cover" priority quality={100}/>
+        <Image src="/images/background.webp" alt="background" fill className="object-cover" priority quality={100} draggable={false}/>
       </div>
 
       <div className="w-full max-w-3xl bg-white border-2 border-gray-light rounded-2xl transition-flat relative z-10" style={{ boxShadow: '0px 5px 0px rgba(0, 0, 0, 0.15)' }}> {/*main frame*/}
@@ -33,7 +33,7 @@ export default function CentralBox() {
             {icons.map((icon) => (
               <div key={icon.name} className='flex flex-col items-center gap-1 cursor-pointer transition-flat hover:scale-105'>
                 <div className="w-24 h-24 flex items-center justify-center">
-                  <Image src={`/images/icons/${icon.file}`} alt={icon.name} width={100} height={100} className="object-contain" /> {/*icons*/}
+                  <Image src={`/images/icons/${icon.file}`} alt={icon.name} width={100} height={100} className="object-contain" draggable={false} /> {/*icons*/}
                 </div> 
                 <span className="text-lg font-mono font-bold text-dark-gray">{icon.label}</span> {/*text of the icons*/}
               </div>
