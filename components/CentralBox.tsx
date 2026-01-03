@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Cat from './Cat';
 
 export default function CentralBox() {
   //all the icons of the page
@@ -41,6 +42,8 @@ export default function CentralBox() {
 
         </div>
       </div>
+
+      <Cat /> {/*cat who meow meow*/}
     </div>
   );
 }

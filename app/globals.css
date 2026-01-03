@@ -47,3 +47,17 @@ body {
 .transition-flat {
   transition: all 0.2s ease-in-out;
 }
+
+/* animation for cat on click */
+@keyframes bounce-once {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+.animate-bounce-once {
+  animation: bounce-once 0.5s ease-in-out;
+}
