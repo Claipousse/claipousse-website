@@ -10,10 +10,6 @@ export default function Cat() {
         //play meow at each click
         const meow = new Audio('/sfx/meow.mp3')
         meow.play();
-
-        //trigger bounce animation (boing boing)
-        setIsBouncing(true);
-        setTimeout(() => setIsBouncing(false), 500) //it takes 0.5s
     };
 
 return (
