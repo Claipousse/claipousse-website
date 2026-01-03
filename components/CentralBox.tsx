@@ -10,8 +10,13 @@ export default function CentralBox() {
     { name: 'contact', file: 'contact.webp', label: 'contact' }
   ]
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white p-8"> {/*all the page -> for now white background but later ill add some crazy background*/}
-      <div className="w-full max-w-3xl bg-white border-2 border-gray-light rounded-2xl transition-flat" style={{ boxShadow: '0px 5px 0px rgba(0, 0, 0, 0.15)' }}> {/*main frame*/}
+    //animated omori background
+    <div className="min-h-screen flex items-center justify-center p-8 relative overflow-hidden">
+      <div className="fixed inset-0 z-0">
+        <Image src="/images/background.webp" alt="background" fill className="object-cover" priority quality={100}/>
+      </div>
+
+      <div className="w-full max-w-3xl bg-white border-2 border-gray-light rounded-2xl transition-flat relative z-10" style={{ boxShadow: '0px 5px 0px rgba(0, 0, 0, 0.15)' }}> {/*main frame*/}
         <div className="bg-dark-gray rounded-t-xl h-14 border-gray-light"></div> {/*grey bar at the top*/}
         <div className="px-12 py-16 flex flex-col items-center gap-12"> {/*main content*/}
           <div className="h-6"></div> {/*top space*/}

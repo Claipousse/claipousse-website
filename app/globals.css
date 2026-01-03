@@ -29,7 +29,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Animation bobbing pour les éléments */
+/* animation bobbing for elements */
 @keyframes bobbing {
   0%, 100% {
     transform: translateY(0px);
@@ -43,7 +43,7 @@ body {
   animation: bobbing 2s ease-in-out infinite;
 }
 
-/* Transition douce pour les hover */
+/* hover transition */
 .transition-flat {
   transition: all 0.2s ease-in-out;
 }
