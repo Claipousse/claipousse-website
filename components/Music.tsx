@@ -31,8 +31,9 @@ export default function MusicCat() {
         if (!musicRef.current) return;
 
         //play stop sound when you click on the best singer cat ever
-        const stopSound = new Audio('/sfx/stop_music.mp3');
-        stopSound.play();
+        const toggleSound = new Audio('/sfx/toggle_music.mp3');
+        toggleSound.volume = 0.3;
+        toggleSound.play();
 
         //toggle behaviour (when you click on cat)
         if (isMuted) { //if it was muted, demute
