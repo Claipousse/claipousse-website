@@ -1,6 +1,4 @@
 'use client';
-
-import {useState} from 'react';
 import Image from 'next/image';
 
 export default function Cat() {
@@ -10,9 +8,9 @@ export default function Cat() {
         meow.play();
     };
 
-return (
-    <div className="fixed bottom-8 left-8 z-50 cursor-pointer" onClick={handleClick}>
-       <Image src="/images/interactive/cat.webp" alt="super cute niko :)" width={120} height={120} className="object-contain hover:scale-110 transition-transform" draggable={false}/>
-    </div>
-  ); 
+    return (
+        <div className="fixed bottom-8 left-8 z-50 cursor-pointer" onClick={handleClick} style={{width: 'clamp(4rem, 10vw, 7.5rem)', height: 'clamp(4rem, 10vw, 7.5rem)'}}>
+            <Image src="/images/interactive/cat.webp" alt="super cute niko :)" width={120} height={120} className="object-contain hover:scale-110 transition-transform w-full h-full" draggable={false} />
+        </div>
+    );
 }
