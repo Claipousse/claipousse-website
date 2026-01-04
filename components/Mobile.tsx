@@ -16,15 +16,18 @@ export default function MobileView() {
             <div className="text-center mb-8">
                 <h1 className="font-body font-bold mb-3" style={{
                     fontSize: 'clamp(2.25rem, 11vw, 4rem)',
-                    WebkitTextStroke: '2px white',
-                    paintOrder: 'stroke fill',
+                    WebkitTextStroke: '2px #0a0023',
                     color: '#FFFFFF'
                 }}>
-                    hi! <span style={{ color: '#5136f0' }}>i'm claipousse</span>
+                    hi! <span style={{ 
+                        color: '#5136f0',
+                        WebkitTextStroke: '4px white',
+                        paintOrder: 'stroke fill'
+                    }}>i'm claipousse</span>
                 </h1>
                 <p className="font-body" style={{
                     fontSize: 'clamp(1.25rem, 5vw, 1.75rem)',
-                    WebkitTextStroke: '1.5px white',
+                    WebkitTextStroke: '3px #0a0023',
                     paintOrder: 'stroke fill',
                     color: '#FFFFFF'
                 }}>
@@ -40,30 +43,30 @@ export default function MobileView() {
                     {icons.slice(0, 4).map((icon) => (
                         <div key={icon.name} className="flex flex-col items-center gap-2 cursor-pointer transition-flat hover:scale-105">
                             <div className="flex items-center justify-center rounded-lg" style={{
-                                backgroundColor: '#b284ff',
+                                backgroundColor: '#7e62ff',
                                 border: '3px solid white',
                                 width: 'clamp(4rem, 20vw, 7rem)',
                                 height: 'clamp(4rem, 20vw, 7rem)',
                                 padding: 'clamp(0.5rem, 2vw, 1rem)'
                             }}>
-                                <Image src={`/images/icons/${icon.file}`} alt={icon.name} width={80} height={80} className="object-contain w-full h-full" draggable={false} />
+                                <Image src={`/images/icons/${icon.file}`} alt={icon.name} width={80} height={80} className="object-contain w-full h-full" draggable={false} style={{ filter: 'drop-shadow(0px 6px 0px rgba(0, 0, 0, 0.25))' }} />
                             </div>
-                            <span className="font-mono font-bold text-white" style={{ fontSize: 'clamp(0.85rem, 3vw, 1rem)' }}>{icon.label}</span>
+                            <span className="font-mono font-bold text-white" style={{ fontSize: 'clamp(0.85rem, 3vw, 1rem)', WebkitTextStroke: '3px #0a0023', paintOrder: 'stroke fill'}}>{icon.label}</span>
                         </div>
                     ))}
                     {/*contact icon alone like a little chud in order to be in the center*/}
                     <div className="col-span-2 flex justify-center">
                         <div className="flex flex-col items-center gap-2 cursor-pointer transition-flat hover:scale-105">
                             <div className="flex items-center justify-center rounded-lg" style={{
-                                backgroundColor: '#b284ff',
+                                backgroundColor: '#7e62ff',
                                 border: '3px solid white',
                                 width: 'clamp(4rem, 20vw, 7rem)',
                                 height: 'clamp(4rem, 20vw, 7rem)',
                                 padding: 'clamp(0.5rem, 2vw, 1rem)'
                             }}>
-                                <Image src={`/images/icons/${icons[4].file}`} alt={icons[4].name} width={80} height={80} className="object-contain w-full h-full" draggable={false} />
+                                <Image src={`/images/icons/${icons[4].file}`} alt={icons[4].name} width={80} height={80} className="object-contain w-full h-full" draggable={false} style={{ filter: 'drop-shadow(0px 6px 0px rgba(0, 0, 0, 0.25))' }}/>
                             </div>
-                            <span className="font-mono font-bold text-white" style={{ fontSize: 'clamp(0.85rem, 3vw, 1rem)' }}>{icons[4].label}</span>
+                            <span className="font-mono font-bold text-white" style={{ fontSize: 'clamp(0.85rem, 3vw, 1rem)', WebkitTextStroke: '3px #0a0023', paintOrder: 'stroke fill' }}>{icons[4].label}</span>
                         </div>
                     </div>
                 </div>
@@ -73,15 +76,15 @@ export default function MobileView() {
                     {icons.map((icon) => (
                         <div key={icon.name} className="flex flex-col items-center gap-2 cursor-pointer transition-flat hover:scale-105">
                             <div className="flex items-center justify-center rounded-lg" style={{
-                                backgroundColor: '#b284ff',
+                                backgroundColor: '#7e62ff',
                                 border: '3px solid white',
                                 width: 'clamp(4rem, 30vw, 6rem)',
                                 height: 'clamp(4rem, 30vw, 6rem)',
                                 padding: 'clamp(0.5rem, 2vw, 1rem)'
                             }}>
-                                <Image src={`/images/icons/${icon.file}`} alt={icon.name} width={80} height={80} className="object-contain w-full h-full" draggable={false} />
+                                <Image src={`/images/icons/${icon.file}`} alt={icon.name} width={80} height={80} className="object-contain w-full h-full" draggable={false} style={{ filter: 'drop-shadow(0px 4px 0px rgba(0, 0, 0, 0.25))' }} />
                             </div>
-                            <span className="font-mono font-bold text-white" style={{ fontSize: 'clamp(0.85rem, 4vw, 1rem)' }}>{icon.label}</span>
+                            <span className="font-mono font-bold text-white" style={{ fontSize: 'clamp(0.85rem, 4vw, 1rem)', WebkitTextStroke: '3px #0a0023', paintOrder: 'stroke fill'}}>{icon.label}</span>
                         </div>
                     ))}
                 </div>
