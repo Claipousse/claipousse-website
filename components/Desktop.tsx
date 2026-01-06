@@ -9,13 +9,13 @@ import WindowWork from './WindowWork';
 import WindowFaq from './WindowFaq';
 import WindowContact from './WindowContact';
 
-//spawn points inside main frame area (random but fixed)
+//spawn points inside main frame area
 const SPAWN_POINTS = {
-    about: { x: 150, y: 120 },
-    links: { x: 250, y: 180 },
-    work: { x: 200, y: 100 },
-    faq: { x: 300, y: 150 },
-    contact: { x: 180, y: 200 }
+    about: { x: 0, y: 0 },
+    links: { x: 0, y: 0 },
+    work: { x: 0, y: 0 },
+    faq: { x: 0, y: 0 },
+    contact: { x: 0, y: 0 }
 };
 
 type WindowType = 'about' | 'links' | 'work' | 'faq' | 'contact';

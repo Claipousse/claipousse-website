@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import Draggable from 'react-draggable';
+import Draggable, { DraggableData, DraggableEvent } from 'react-draggable';
 
 interface WindowProps {
   title: string;
@@ -15,13 +15,11 @@ interface WindowProps {
 }
 
 export default function Window({ title, children, onClose, initialX, initialY, onPositionChange, onFocus, zIndex }: WindowProps) {
-  const [position, setPosition] = useState({ x: initialX, y: initialY });
   const [isClosing, setIsClosing] = useState(false);
   const nodeRef = useRef<HTMLDivElement>(null);
 
-  //handle drag
-  const handleDrag = (e: any, data: any) => {
-    setPosition({ x: data.x, y: data.y });
+  //handle drag stop (save final position)
+  const handleStop = (e: DraggableEvent, data: DraggableData) => {
     onPositionChange(data.x, data.y);
   };
 
@@ -33,8 +31,8 @@ export default function Window({ title, children, onClose, initialX, initialY, o
     }, 250);
   };
 
-  //focus window on click anywhere
-  const handleWindowClick = () => {
+  //focus window on drag start
+  const handleStart = () => {
     onFocus();
   };
 
@@ -42,14 +40,13 @@ export default function Window({ title, children, onClose, initialX, initialY, o
     <Draggable
       nodeRef={nodeRef}
       handle=".drag-handle"
-      position={position}
-      onDrag={handleDrag}
-      bounds="parent"
-      onMouseDown={onFocus}
+      defaultPosition={{ x: initialX, y: initialY }}
+      onStart={handleStart}
+      onStop={handleStop}
     >
       <div
         ref={nodeRef}
-        className={`fixed bg-white border-2 border-gray-light rounded-2xl transition-flat ${isClosing ? 'window-close' : 'window-open'}`}
+        className={`fixed bg-white border-2 border-gray-light rounded-2xl ${isClosing ? 'window-close' : 'window-open'}`}
         style={{
           zIndex: zIndex,
           boxShadow: '0px 5px 0px rgba(0, 0, 0, 0.15)',
@@ -57,12 +54,9 @@ export default function Window({ title, children, onClose, initialX, initialY, o
           maxHeight: '85vh',
           minWidth: '400px'
         }}
-        onClick={handleWindowClick}
       >
         {/* grey draggable header */}
-        <div
-          className="drag-handle bg-dark-gray rounded-t-xl h-14 flex items-center justify-between px-4 cursor-move select-none"
-        >
+        <div className="drag-handle bg-dark-gray rounded-t-xl h-14 flex items-center justify-between px-4 cursor-move select-none">
           <span className="text-white font-mono font-bold text-sm">{title}</span>
           <button
             className="text-white hover:text-gray-light transition-colors font-mono text-sm"
