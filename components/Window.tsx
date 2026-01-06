@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import Draggable, { DraggableData, DraggableEvent } from 'react-draggable';
+import Draggable from 'react-draggable';
 
 interface WindowProps {
   title: string;
@@ -18,11 +18,6 @@ export default function Window({ title, children, onClose, initialX, initialY, o
   const [isClosing, setIsClosing] = useState(false);
   const nodeRef = useRef<HTMLDivElement>(null);
 
-  //handle drag stop (save final position)
-  const handleStop = (e: DraggableEvent, data: DraggableData) => {
-    onPositionChange(data.x, data.y);
-  };
-
   //handle close with animation
   const handleClose = () => {
     setIsClosing(true);
@@ -31,22 +26,15 @@ export default function Window({ title, children, onClose, initialX, initialY, o
     }, 250);
   };
 
-  //focus window on drag start
-  const handleStart = () => {
-    onFocus();
-  };
-
   return (
-    <Draggable
+    <Draggable 
       nodeRef={nodeRef}
-      handle=".drag-handle"
+      handle=".drag-handle" 
       defaultPosition={{ x: initialX, y: initialY }}
-      onStart={handleStart}
-      onStop={handleStop}
     >
       <div
         ref={nodeRef}
-        className={`fixed bg-white border-2 border-gray-light rounded-2xl ${isClosing ? 'window-close' : 'window-open'}`}
+        className={`absolute bg-white border-2 border-gray-light rounded-2xl ${isClosing ? 'window-close' : 'window-open'}`}
         style={{
           zIndex: zIndex,
           boxShadow: '0px 5px 0px rgba(0, 0, 0, 0.15)',
@@ -54,6 +42,7 @@ export default function Window({ title, children, onClose, initialX, initialY, o
           maxHeight: '85vh',
           minWidth: '400px'
         }}
+        onClick={onFocus}
       >
         {/* grey draggable header */}
         <div className="drag-handle bg-dark-gray rounded-t-xl h-14 flex items-center justify-between px-4 cursor-move select-none">
