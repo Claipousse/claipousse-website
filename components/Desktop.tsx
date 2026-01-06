@@ -1,4 +1,30 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
+import Window from './Window';
+import WindowAbout from './WindowAbout';
+import WindowLinks from './WindowLinks';
+import WindowWork from './WindowWork';
+import WindowFaq from './WindowFaq';
+import WindowContact from './WindowContact';
+
+//spawn points inside main frame area (random but fixed)
+const SPAWN_POINTS = {
+    about: { x: 150, y: 120 },
+    links: { x: 250, y: 180 },
+    work: { x: 200, y: 100 },
+    faq: { x: 300, y: 150 },
+    contact: { x: 180, y: 200 }
+};
+
+type WindowType = 'about' | 'links' | 'work' | 'faq' | 'contact';
+
+interface WindowState {
+    type: WindowType;
+    position: { x: number; y: number };
+    zIndex: number;
+}
 
 export default function DesktopView() {
     const icons = [
@@ -8,6 +34,60 @@ export default function DesktopView() {
         { name: 'faq', file: 'faq.webp', label: 'faq' },
         { name: 'contact', file: 'contact.webp', label: 'contact' }
     ];
+
+    const [openWindows, setOpenWindows] = useState<WindowState[]>([]);
+    const [highestZIndex, setHighestZIndex] = useState(100);
+
+    //open window (or bring to front if already open)
+    const handleIconClick = (type: WindowType) => {
+        const existingWindow = openWindows.find(w => w.type === type);
+
+        if (existingWindow) {
+            //window already open, bring to front
+            handleWindowFocus(type);
+        } else {
+            //open new window
+            const spawnPoint = SPAWN_POINTS[type];
+            setOpenWindows([...openWindows, {
+                type,
+                position: { ...spawnPoint },
+                zIndex: highestZIndex + 1
+            }]);
+            setHighestZIndex(highestZIndex + 1);
+        }
+    };
+
+    //close window
+    const handleWindowClose = (type: WindowType) => {
+        setOpenWindows(openWindows.filter(w => w.type !== type));
+    };
+
+    //update window position
+    const handlePositionChange = (type: WindowType, x: number, y: number) => {
+        setOpenWindows(openWindows.map(w =>
+            w.type === type ? { ...w, position: { x, y } } : w
+        ));
+    };
+
+    //bring window to front
+    const handleWindowFocus = (type: WindowType) => {
+        const newZIndex = highestZIndex + 1;
+        setOpenWindows(openWindows.map(w =>
+            w.type === type ? { ...w, zIndex: newZIndex } : w
+        ));
+        setHighestZIndex(newZIndex);
+    };
+
+    //get window content component
+    const getWindowContent = (type: WindowType) => {
+        switch (type) {
+            case 'about': return <WindowAbout />;
+            case 'links': return <WindowLinks />;
+            case 'work': return <WindowWork />;
+            case 'faq': return <WindowFaq />;
+            case 'contact': return <WindowContact />;
+        }
+    };
 
     return (
         <div className="min-h-screen flex items-center justify-center p-8">
@@ -51,6 +131,7 @@ export default function DesktopView() {
                                 key={icon.name}
                                 className='flex flex-col items-center cursor-pointer transition-flat hover:scale-105'
                                 style={{ gap: 'clamp(0.25rem, 0.5vw, 0.5rem)' }}
+                                onClick={() => handleIconClick(icon.name as WindowType)}
                             >
                                 <div
                                     className="flex items-center justify-center"
@@ -86,6 +167,22 @@ export default function DesktopView() {
             <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40">
                 <p className="text-white font-mono text-sm">© 2025 claipousse</p>
             </div>
+
+            {/* render open windows */}
+            {openWindows.map((window) => (
+                <Window
+                    key={window.type}
+                    title={window.type}
+                    initialX={window.position.x}
+                    initialY={window.position.y}
+                    onClose={() => handleWindowClose(window.type)}
+                    onPositionChange={(x, y) => handlePositionChange(window.type, x, y)}
+                    onFocus={() => handleWindowFocus(window.type)}
+                    zIndex={window.zIndex}
+                >
+                    {getWindowContent(window.type)}
+                </Window>
+            ))}
         </div>
     );
 }
