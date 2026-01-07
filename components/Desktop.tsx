@@ -46,6 +46,11 @@ export default function DesktopView() {
             //window already open, bring to front
             handleWindowFocus(type);
         } else {
+            //play open sound
+            const openSound = new Audio('/sfx/open.mp3');
+            openSound.volume = 0.5;
+            openSound.play();
+            
             //open new window
             const spawnPoint = SPAWN_POINTS[type];
             setOpenWindows([...openWindows, {

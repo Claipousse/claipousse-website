@@ -20,6 +20,9 @@ export default function Window({ title, children, onClose, initialX, initialY, o
 
   //handle close with animation
   const handleClose = () => {
+    const closeSound = new Audio('/sfx/close.mp3');
+    closeSound.volume = 0.5;
+    closeSound.play();
     setIsClosing(true);
     setTimeout(() => {
       onClose();
