@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Cat from './Cat';
 import Music from './Music';
 import Desktop from './Desktop';
@@ -7,18 +6,22 @@ import Mobile from './Mobile';
 export default function CentralBox() {
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* animated background (both versions) */}
-      <div className="fixed inset-0 z-0">
-        <Image 
-          src="/images/background.webp" 
-          alt="background" 
-          fill 
-          className="object-cover" 
-          priority 
-          draggable={false} 
-          unoptimized={true}
-        />
-      </div>
+      {/* animated video background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="fixed inset-0 z-0 w-full h-full object-cover"
+        style={{
+          willChange: 'transform',
+          transform: 'translate3d(0, 0, 0)',
+          backfaceVisibility: 'hidden',
+          pointerEvents: 'none',
+        }}
+      >
+        <source src="/images/background.webm" type="video/webm" />
+      </video>
 
       {/* desktop version - hidden < 768px */}
       <div className="hidden md:block">
