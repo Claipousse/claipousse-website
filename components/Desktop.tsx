@@ -50,7 +50,7 @@ export default function DesktopView() {
             const openSound = new Audio('/sfx/open.mp3');
             openSound.volume = 0.5;
             openSound.play();
-            
+
             //open new window
             const spawnPoint = SPAWN_POINTS[type];
             setOpenWindows([...openWindows, {
@@ -117,13 +117,13 @@ export default function DesktopView() {
                     <div className="text-center">
                         <h1
                             className="font-body font-bold mb-3"
-                            style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)' }}
+                            style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', fontFamily: 'var(--font-title)' }}
                         >
                             hi! <span className="text-accent font-bold">i'm claipousse</span>
                         </h1>
                         <p
-                            className="text-dark-gray font-body"
-                            style={{ fontSize: 'clamp(1.25rem, 2.5vw, 1.875rem)' }}
+                            className="text-dark-gray"
+                            style={{ fontSize: 'clamp(1.25rem, 2.5vw, 1.875rem)',fontFamily: 'var(--font-body)'}}
                         >
                             student in cybersecurity, cat enjoyer
                         </p>
@@ -156,8 +156,8 @@ export default function DesktopView() {
                                     />
                                 </div>
                                 <span
-                                    className="font-mono font-bold text-dark-gray"
-                                    style={{ fontSize: 'clamp(0.875rem, 1.2vw, 1.125rem)' }}
+                                    className="font-bold text-dark-gray"
+                                    style={{ fontSize: 'clamp(0.875rem, 1.2vw, 1.125rem)', fontFamily:'var(--font-mono)' }}
                                 >
                                     {icon.label}
                                 </span>

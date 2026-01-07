@@ -12,7 +12,9 @@
   --shadow-flat: 0px 5px 0px rgba(0, 0, 0, 0.15);
   --shadow-flat-hover: 0px 8px 2px rgba(0, 0, 0, 0.15);
 
-  --font-body: "Zen Kaku Gothic New", "sans-serif"; /*font*/
+  --font-title: "Zen Kaku Gothic New", sans-serif; /* for titles */
+  --font-body: "Roboto Variable", sans-serif; /* for text */
+  --font-mono: "Roboto Mono Variable", monospace; /* for labels */
 }
 
 * {

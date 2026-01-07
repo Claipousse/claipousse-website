@@ -17,7 +17,8 @@ export default function MobileView() {
                 <h1 className="font-body font-bold mb-3" style={{
                     fontSize: 'clamp(2.25rem, 11vw, 4rem)',
                     WebkitTextStroke: '2px #0a0023',
-                    color: '#FFFFFF'
+                    color: '#FFFFFF',
+                    fontFamily: 'var(--font-title)'
                 }}>
                     hi! <span style={{ 
                         color: '#5136f0',
@@ -29,7 +30,8 @@ export default function MobileView() {
                     fontSize: 'clamp(1.25rem, 5vw, 1.75rem)',
                     WebkitTextStroke: '3px #0a0023',
                     paintOrder: 'stroke fill',
-                    color: '#FFFFFF'
+                    color: '#FFFFFF',
+                    fontFamily: 'var(--font-body)'
                 }}>
                     student in cybersecurity, cat enjoyer
                 </p>
@@ -51,7 +53,7 @@ export default function MobileView() {
                             }}>
                                 <Image src={`/images/icons/${icon.file}`} alt={icon.name} width={80} height={80} className="object-contain w-full h-full" draggable={false} style={{ filter: 'drop-shadow(0px 6px 0px rgba(0, 0, 0, 0.25))' }} />
                             </div>
-                            <span className="font-mono font-bold text-white" style={{ fontSize: 'clamp(0.85rem, 3vw, 1rem)', WebkitTextStroke: '3px #0a0023', paintOrder: 'stroke fill'}}>{icon.label}</span>
+                            <span className="font-bold text-white" style={{ fontSize: 'clamp(0.85rem, 3vw, 1rem)', WebkitTextStroke: '3px #0a0023', paintOrder: 'stroke fill', fontFamily: 'var(--font-mono)'}}>{icon.label}</span>
                         </div>
                     ))}
                     {/*contact icon alone like a little chud in order to be in the center*/}
@@ -66,7 +68,7 @@ export default function MobileView() {
                             }}>
                                 <Image src={`/images/icons/${icons[4].file}`} alt={icons[4].name} width={80} height={80} className="object-contain w-full h-full" draggable={false} style={{ filter: 'drop-shadow(0px 6px 0px rgba(0, 0, 0, 0.25))' }}/>
                             </div>
-                            <span className="font-mono font-bold text-white" style={{ fontSize: 'clamp(0.85rem, 3vw, 1rem)', WebkitTextStroke: '3px #0a0023', paintOrder: 'stroke fill' }}>{icons[4].label}</span>
+                            <span className="font-bold text-white" style={{ fontSize: 'clamp(0.85rem, 3vw, 1rem)', WebkitTextStroke: '3px #0a0023', paintOrder: 'stroke fill', fontFamily: 'var(--font-mono)'}}>{icons[4].label}</span>
                         </div>
                     </div>
                 </div>
@@ -84,7 +86,7 @@ export default function MobileView() {
                             }}>
                                 <Image src={`/images/icons/${icon.file}`} alt={icon.name} width={80} height={80} className="object-contain w-full h-full" draggable={false} style={{ filter: 'drop-shadow(0px 4px 0px rgba(0, 0, 0, 0.25))' }} />
                             </div>
-                            <span className="font-mono font-bold text-white" style={{ fontSize: 'clamp(0.85rem, 4vw, 1rem)', WebkitTextStroke: '3px #0a0023', paintOrder: 'stroke fill'}}>{icon.label}</span>
+                            <span className="font-bold text-white" style={{ fontSize: 'clamp(0.85rem, 4vw, 1rem)', WebkitTextStroke: '3px #0a0023', paintOrder: 'stroke fill', fontFamily: 'var(--font-mono)'}}>{icon.label}</span>
                         </div>
                     ))}
                 </div>
