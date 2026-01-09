@@ -1,4 +1,4 @@
-import Cat from './Cat';
+import Cat from './Niko';
 import Music from './Music';
 import Desktop from './Desktop';
 import Mobile from './Mobile';
