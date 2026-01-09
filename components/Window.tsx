@@ -51,7 +51,7 @@ export default function Window({ title, children, onClose, initialX, initialY, o
         <div className="drag-handle bg-dark-gray rounded-t-xl h-14 flex items-center justify-between px-4 cursor-move select-none">
           <span className="text-white font-mono text-lg" style={{ fontFamily: 'var(--font-mono)' }}>{title}</span>
           <button
-            className="text-white hover:text-gray-light transition-colors font-mono text-lg"
+            className="text-white font-mono text-lg transition-transform hover:scale-110"
             onClick={(e) => {
               e.stopPropagation();
               handleClose();
