@@ -34,6 +34,7 @@ export default function Window({ title, children, onClose, initialX, initialY, o
       nodeRef={nodeRef}
       handle=".drag-handle" 
       defaultPosition={{ x: initialX, y: initialY }}
+      onStart={onFocus}
     >
       <div
         ref={nodeRef}
