@@ -35,6 +35,7 @@ export default function Window({ title, children, onClose, initialX, initialY, o
       handle=".drag-handle" 
       defaultPosition={{ x: initialX, y: initialY }}
       onStart={onFocus}
+      bounds="parent"
     >
       <div ref={nodeRef} className="absolute" style={{ zIndex: zIndex }} onClick={onFocus}>
         {/*animation wrapper*/}

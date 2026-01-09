@@ -95,7 +95,7 @@ export default function DesktopView() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center p-8">
+        <div className="min-h-screen flex items-center justify-center">
             {/* main frame with fluid sizing */}
             <div
                 className="w-full bg-white border-2 border-gray-light rounded-2xl transition-flat relative z-10"
