@@ -1,8 +1,63 @@
+import Image from 'next/image';
+
 export default function WindowLinks() {
   return (
-    <div>
-      <h2 className="text-2xl font-bold text-dark-gray mb-4">Links</h2>
-      <p className="text-dark-gray">coming soon...</p>
+    <div 
+      className="flex flex-col items-center justify-center"
+      style={{ 
+        padding: 'clamp(1rem, 2vw, 2rem) clamp(1.5rem, 3vw, 3rem)'
+      }}
+    >
+      <div 
+        className="grid grid-cols-3"
+        style={{
+          gap: 'clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 3vw, 2.5rem)',
+          width: '100%',
+          maxWidth: 'clamp(440px, 44vw, 680px)'
+        }}
+      >
+        <a href="https://discord.com/users/609413089938505728" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105" style={{ gap: 'clamp(0.25rem, 0.5vw, 0.5rem)' }}>
+          <div style={{ width: 'clamp(4rem, 6vw, 6rem)', height: 'clamp(4rem, 6vw, 6rem)' }}>
+            <Image src="/images/socials/discord.webp" alt="discord" width={128} height={128} className="w-full h-full object-contain" draggable={false} style={{ filter: 'drop-shadow(0px 8px 0px rgba(0, 0, 0, 0.25))' }} />
+          </div>
+          <span className="font-bold text-dark-gray text-center" style={{ fontFamily: 'var(--font-mono)', fontSize: 'clamp(0.75rem, 1vw, 1rem)' }}>discord</span>
+        </a>
+
+        <a href="https://github.com/Claipousse" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105" style={{ gap: 'clamp(0.25rem, 0.5vw, 0.5rem)' }}>
+          <div style={{ width: 'clamp(4rem, 6vw, 6rem)', height: 'clamp(4rem, 6vw, 6rem)' }}>
+            <Image src="/images/socials/github.webp" alt="github" width={128} height={128} className="w-full h-full object-contain" draggable={false} style={{ filter: 'drop-shadow(0px 8px 0px rgba(0, 0, 0, 0.25))' }} />
+          </div>
+          <span className="font-bold text-dark-gray text-center" style={{ fontFamily: 'var(--font-mono)', fontSize: 'clamp(0.75rem, 1vw, 1rem)' }}>github</span>
+        </a>
+
+        <a href="https://steamcommunity.com/id/claipousse" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105" style={{ gap: 'clamp(0.25rem, 0.5vw, 0.5rem)' }}>
+          <div style={{ width: 'clamp(4rem, 6vw, 6rem)', height: 'clamp(4rem, 6vw, 6rem)' }}>
+            <Image src="/images/socials/steam.webp" alt="steam" width={128} height={128} className="w-full h-full object-contain" draggable={false} style={{ filter: 'drop-shadow(0px 8px 0px rgba(0, 0, 0, 0.25))' }} />
+          </div>
+          <span className="font-bold text-dark-gray text-center" style={{ fontFamily: 'var(--font-mono)', fontSize: 'clamp(0.75rem, 1vw, 1rem)' }}>steam</span>
+        </a>
+
+        <a href="https://t.me/Claipousse" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105" style={{ gap: 'clamp(0.25rem, 0.5vw, 0.5rem)' }}>
+          <div style={{ width: 'clamp(4rem, 6vw, 6rem)', height: 'clamp(4rem, 6vw, 6rem)' }}>
+            <Image src="/images/socials/telegram.webp" alt="telegram" width={128} height={128} className="w-full h-full object-contain" draggable={false} style={{ filter: 'drop-shadow(0px 8px 0px rgba(0, 0, 0, 0.25))' }} />
+          </div>
+          <span className="font-bold text-dark-gray text-center" style={{ fontFamily: 'var(--font-mono)', fontSize: 'clamp(0.75rem, 1vw, 1rem)' }}>telegram</span>
+        </a>
+
+        <a href="https://instagram.com/0xclement" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105" style={{ gap: 'clamp(0.25rem, 0.5vw, 0.5rem)' }}>
+          <div style={{ width: 'clamp(4rem, 6vw, 6rem)', height: 'clamp(4rem, 6vw, 6rem)' }}>
+            <Image src="/images/socials/instagram.webp" alt="instagram" width={128} height={128} className="w-full h-full object-contain" draggable={false} style={{ filter: 'drop-shadow(0px 8px 0px rgba(0, 0, 0, 0.25))' }} />
+          </div>
+          <span className="font-bold text-dark-gray text-center" style={{ fontFamily: 'var(--font-mono)', fontSize: 'clamp(0.75rem, 1vw, 1rem)' }}>instagram</span>
+        </a>
+
+        <a href="https://youtube.com/@YOUR_CHANNEL" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105" style={{ gap: 'clamp(0.25rem, 0.5vw, 0.5rem)' }}>
+          <div style={{ width: 'clamp(4rem, 6vw, 6rem)', height: 'clamp(4rem, 6vw, 6rem)' }}>
+            <Image src="/images/socials/youtube.webp" alt="youtube" width={128} height={128} className="w-full h-full object-contain" draggable={false} style={{ filter: 'drop-shadow(0px 8px 0px rgba(0, 0, 0, 0.25))' }} />
+          </div>
+          <span className="font-bold text-dark-gray text-center" style={{ fontFamily: 'var(--font-mono)', fontSize: 'clamp(0.75rem, 1vw, 1rem)' }}>youtube</span>
+        </a>
+      </div>
     </div>
   );
 }
