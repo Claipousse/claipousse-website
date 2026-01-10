@@ -1,4 +1,4 @@
-import Cat from './Niko';
+import Niko from './Niko';
 import Music from './Music';
 import Desktop from './Desktop';
 import Mobile from './Mobile';
@@ -34,7 +34,7 @@ export default function CentralBox() {
       </div>
       
       {/* cats (visible on both versions) */}
-      <Cat/>
+      <Niko/>
       <Music/>
     </div>
   );

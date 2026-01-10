@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Mewo from './Mewo';
 import Window from './Window';
 import WindowAbout from './WindowAbout';
 import WindowLinks from './WindowLinks';
@@ -107,9 +108,11 @@ export default function DesktopView() {
             >
                 {/* grey bar at top */}
                 <div
-                    className="bg-dark-gray rounded-t-xl border-gray-light absolute top-0 left-0 right-0"
+                    className="bg-dark-gray rounded-t-xl border-gray-light absolute top-0 left-0 right-0 flex items-center justify-end pr-4"
                     style={{ height: 'clamp(2.5rem, 3.5vw, 3.5rem)' }}
-                ></div>
+                >
+                    <Mewo/>
+                </div>
 
                 <div className="flex flex-col items-center" style={{ gap: 'clamp(2rem, 3vw, 3rem)', marginTop: 'clamp(3rem, 4vw, 4rem)' }}>
 
