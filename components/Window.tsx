@@ -63,7 +63,8 @@ export default function Window({
             boxShadow: '0px 5px 0px rgba(0, 0, 0, 0.15)',
             maxWidth: maxWidth,
             maxHeight: maxHeight,
-            minWidth: minWidth
+            minWidth: minWidth,
+            overflow:'hidden'
           }}
         >
           {/* grey draggable header */}
@@ -81,7 +82,7 @@ export default function Window({
           </div>
 
           {/* content with scroll */}
-          <div className="overflow-y-auto p-6" style={{ maxHeight: `calc(${maxHeight} - 56px)` }}>
+          <div className="overflow-y-auto p-6" style={{ maxHeight: `calc(${maxHeight} - 56px)`}}>
             {children}
           </div>
 

@@ -37,9 +37,38 @@ export default function WindowAbout() {
               fontFamily: 'var(--font-body)'
             }}
           >
-            [mini description placeholder]
+            french student, big nerd
           </p>
         </div>
+      </div>
+
+      {/* intro paragraph with list */}
+      <div className="mb-6">
+        <p
+          className="text-dark-gray mb-3"
+          style={{
+            fontSize: 'clamp(1rem, 1.75vw, 1.25rem)',
+            lineHeight: '1.6',
+            fontFamily: 'var(--font-body)'
+          }}
+        >
+          hi! i'm claipousse, i...
+        </p>
+        
+        <ul
+          className="text-dark-gray"
+          style={{
+            fontSize: 'clamp(1rem, 1.75vw, 1.25rem)',
+            lineHeight: '1.4',
+            fontFamily: 'var(--font-body)',
+            listStyle: 'disc',
+            paddingLeft: '1.5rem'
+          }}
+        >
+          <li>study computer science and cybersecurity.</li>
+          <li>have 2 beautiful cats</li>
+          <li>am the world first cat lover in the entire universe !!</li>
+        </ul>
       </div>
 
       {/* favorites games */}
