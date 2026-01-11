@@ -30,9 +30,9 @@ export default function Window({ title, children, onClose, initialX, initialY, o
   };
 
   return (
-    <Draggable 
+    <Draggable
       nodeRef={nodeRef}
-      handle=".drag-handle" 
+      handle=".drag-handle"
       defaultPosition={{ x: initialX, y: initialY }}
       onStart={onFocus}
       bounds="parent"
@@ -42,9 +42,9 @@ export default function Window({ title, children, onClose, initialX, initialY, o
         <div className={`bg-white border-2 border-gray-light rounded-2xl ${isClosing ? 'window-close' : 'window-open'}`}
           style={{
             boxShadow: '0px 5px 0px rgba(0, 0, 0, 0.15)',
-            maxWidth: '90vw',
+            maxWidth: 'clamp(550px, 55vw, 850px)',
             maxHeight: '85vh',
-            minWidth: '400px'
+            minWidth: '550px'
           }}
         >
           {/* grey draggable header */}
