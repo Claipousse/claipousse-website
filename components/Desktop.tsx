@@ -19,6 +19,35 @@ const SPAWN_POINTS = {
     contact: { x: 0, y: 0 }
 };
 
+//window sizes configuration
+const WINDOW_SIZES = {
+    about: {
+        maxWidth: 'clamp(500px, 50vw, 750px)',
+        minWidth: '500px',
+        maxHeight: '65vh'
+    },
+    links: {
+        maxWidth: 'clamp(550px, 55vw, 850px)',
+        minWidth: '550px',
+        maxHeight: '85vh'
+    },
+    work: {
+        maxWidth: 'clamp(550px, 55vw, 850px)',
+        minWidth: '550px',
+        maxHeight: '85vh'
+    },
+    faq: {
+        maxWidth: 'clamp(550px, 55vw, 850px)',
+        minWidth: '550px',
+        maxHeight: '85vh'
+    },
+    contact: {
+        maxWidth: 'clamp(550px, 55vw, 850px)',
+        minWidth: '550px',
+        maxHeight: '85vh'
+    }
+};
+
 type WindowType = 'about' | 'links' | 'work' | 'faq' | 'contact';
 
 interface WindowState {
@@ -111,7 +140,7 @@ export default function DesktopView() {
                     className="bg-dark-gray rounded-t-xl border-gray-light absolute top-0 left-0 right-0 flex items-center justify-end pr-4"
                     style={{ height: 'clamp(2.5rem, 3.5vw, 3.5rem)' }}
                 >
-                    <Mewo/>
+                    <Mewo />
                 </div>
 
                 <div className="flex flex-col items-center" style={{ gap: 'clamp(2rem, 3vw, 3rem)', marginTop: 'clamp(3rem, 4vw, 4rem)' }}>
@@ -126,7 +155,7 @@ export default function DesktopView() {
                         </h1>
                         <p
                             className="text-dark-gray"
-                            style={{ fontSize: 'clamp(1.25rem, 2.5vw, 1.875rem)',fontFamily: 'var(--font-body)'}}
+                            style={{ fontSize: 'clamp(1.25rem, 2.5vw, 1.875rem)', fontFamily: 'var(--font-body)' }}
                         >
                             student in cybersecurity, cat enjoyer
                         </p>
@@ -160,7 +189,7 @@ export default function DesktopView() {
                                 </div>
                                 <span
                                     className="font-bold text-dark-gray"
-                                    style={{ fontSize: 'clamp(0.875rem, 1.2vw, 1.125rem)', fontFamily:'var(--font-mono)' }}
+                                    style={{ fontSize: 'clamp(0.875rem, 1.2vw, 1.125rem)', fontFamily: 'var(--font-mono)' }}
                                 >
                                     {icon.label}
                                 </span>
@@ -175,7 +204,7 @@ export default function DesktopView() {
             <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40">
                 <p className="text-white font-mono text-sm">© 2025 claipousse</p>
             </div>
-
+            
             {/* render open windows */}
             {openWindows.map((window) => (
                 <Window
@@ -187,6 +216,9 @@ export default function DesktopView() {
                     onPositionChange={(x, y) => handlePositionChange(window.type, x, y)}
                     onFocus={() => handleWindowFocus(window.type)}
                     zIndex={window.zIndex}
+                    customMaxWidth={WINDOW_SIZES[window.type].maxWidth}
+                    customMinWidth={WINDOW_SIZES[window.type].minWidth}
+                    customMaxHeight={WINDOW_SIZES[window.type].maxHeight}
                 >
                     {getWindowContent(window.type)}
                 </Window>

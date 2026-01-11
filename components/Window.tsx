@@ -12,11 +12,30 @@ interface WindowProps {
   onPositionChange: (x: number, y: number) => void;
   onFocus: () => void;
   zIndex: number;
+  customMaxWidth?: string;
+  customMinWidth?: string;
+  customMaxHeight?: string;
 }
 
-export default function Window({ title, children, onClose, initialX, initialY, onPositionChange, onFocus, zIndex }: WindowProps) {
+export default function Window({ 
+  title, 
+  children, 
+  onClose, 
+  initialX, 
+  initialY, 
+  onPositionChange, 
+  onFocus, 
+  zIndex,
+  customMaxWidth,
+  customMinWidth,
+  customMaxHeight
+}: WindowProps) {
   const [isClosing, setIsClosing] = useState(false);
   const nodeRef = useRef<HTMLDivElement>(null);
+
+  const maxWidth = customMaxWidth || 'clamp(550px, 55vw, 850px)';
+  const minWidth = customMinWidth || '550px';
+  const maxHeight = customMaxHeight || '85vh';
 
   //handle close with animation
   const handleClose = () => {
@@ -42,9 +61,9 @@ export default function Window({ title, children, onClose, initialX, initialY, o
         <div className={`bg-white border-2 border-gray-light rounded-2xl ${isClosing ? 'window-close' : 'window-open'}`}
           style={{
             boxShadow: '0px 5px 0px rgba(0, 0, 0, 0.15)',
-            maxWidth: 'clamp(550px, 55vw, 850px)',
-            maxHeight: '85vh',
-            minWidth: '550px'
+            maxWidth: maxWidth,
+            maxHeight: maxHeight,
+            minWidth: minWidth
           }}
         >
           {/* grey draggable header */}
@@ -62,7 +81,7 @@ export default function Window({ title, children, onClose, initialX, initialY, o
           </div>
 
           {/* content with scroll */}
-          <div className="overflow-y-auto p-6" style={{ maxHeight: 'calc(85vh - 56px)' }}>
+          <div className="overflow-y-auto p-6" style={{ maxHeight: `calc(${maxHeight} - 56px)` }}>
             {children}
           </div>
 
