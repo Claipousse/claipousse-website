@@ -2,19 +2,19 @@ import Image from 'next/image';
 
 export default function WindowAbout() {
   return (
-    <>
+    <div style={{ paddingLeft: '2rem' }}>
       {/* header with photo, name and description */}
       <div className="flex items-center gap-6 mb-6">
         <div className="flex-shrink-0">
           <Image
             src="/images/other/myself.webp"
             alt="Claipousse"
-            width={120}
-            height={120}
+            width={150}
+            height={150}
             className="rounded-full object-cover border-2 border-gray-light"
             style={{ 
-              width: 'clamp(80px, 10vw, 120px)', 
-              height: 'clamp(80px, 10vw, 120px)' 
+              width: 'clamp(100px, 12vw, 150px)', 
+              height: 'clamp(100px, 12vw, 150px)' 
             }}
             draggable={false}
           />
@@ -23,18 +23,17 @@ export default function WindowAbout() {
           <h1
             className="font-bold"
             style={{
-              fontSize: 'clamp(1.5rem, 3vw, 2.5rem)',
+              fontSize: 'clamp(1.75rem, 3.5vw, 3rem)',
               color: '#5136f0',
               fontFamily: 'var(--font-title)',
-              marginBottom: '0.5rem'
             }}
           >
             Claipousse / Clem
           </h1>
           <p
+            className="text-dark-gray"
             style={{
-              fontSize: 'clamp(1rem, 1.8vw, 1.25rem)',
-              color: '#5136f0',
+              fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
               fontFamily: 'var(--font-body)'
             }}
           >
@@ -48,7 +47,7 @@ export default function WindowAbout() {
         <h2
           className="font-bold mb-2"
           style={{
-            fontSize: 'clamp(1rem, 1.8vw, 1.25rem)',
+            fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
             fontFamily: 'var(--font-mono)',
             letterSpacing: '0.05em'
           }}
@@ -58,7 +57,7 @@ export default function WindowAbout() {
         <ul
           className="text-dark-gray mb-3"
           style={{
-            fontSize: 'clamp(0.875rem, 1.5vw, 1rem)',
+            fontSize: 'clamp(1rem, 1.75vw, 1.25rem)',
             lineHeight: '1.4',
             fontFamily: 'var(--font-body)',
             listStyle: 'disc',
@@ -75,7 +74,7 @@ export default function WindowAbout() {
         <p
           className="text-dark-gray"
           style={{
-            fontSize: 'clamp(0.875rem, 1.5vw, 1rem)',
+            fontSize: 'clamp(1rem, 1.75vw, 1.25rem)',
             lineHeight: '1.6',
             fontFamily: 'var(--font-body)'
           }}
@@ -89,7 +88,7 @@ export default function WindowAbout() {
         <h2
           className="font-bold mb-2"
           style={{
-            fontSize: 'clamp(1rem, 1.8vw, 1.25rem)',
+            fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
             fontFamily: 'var(--font-mono)',
             letterSpacing: '0.05em'
           }}
@@ -99,7 +98,7 @@ export default function WindowAbout() {
         <ul
           className="text-dark-gray mb-3"
           style={{
-            fontSize: 'clamp(0.875rem, 1.5vw, 1rem)',
+            fontSize: 'clamp(1rem, 1.75vw, 1.25rem)',
             lineHeight: '1.4',
             fontFamily: 'var(--font-body)',
             listStyle: 'disc',
@@ -118,7 +117,7 @@ export default function WindowAbout() {
         <p
           className="text-dark-gray"
           style={{
-            fontSize: 'clamp(0.875rem, 1.5vw, 1rem)',
+            fontSize: 'clamp(1rem, 1.75vw, 1.25rem)',
             lineHeight: '1.6',
             fontFamily: 'var(--font-body)'
           }}
@@ -132,7 +131,7 @@ export default function WindowAbout() {
         <h2
           className="font-bold mb-2"
           style={{
-            fontSize: 'clamp(1rem, 1.8vw, 1.25rem)',
+            fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
             fontFamily: 'var(--font-mono)',
             letterSpacing: '0.05em'
           }}
@@ -142,7 +141,7 @@ export default function WindowAbout() {
         <ul
           className="text-dark-gray"
           style={{
-            fontSize: 'clamp(0.875rem, 1.5vw, 1rem)',
+            fontSize: 'clamp(1rem, 1.75vw, 1.25rem)',
             lineHeight: '1.4',
             fontFamily: 'var(--font-body)',
             listStyle: 'disc',
@@ -185,6 +184,6 @@ export default function WindowAbout() {
           background-color: #a4a4a4;
         }
       `}</style>
-    </>
+    </div>
   );
 }
