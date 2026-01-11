@@ -15,6 +15,9 @@
   --font-title: "Zen Kaku Gothic New", sans-serif; /* for titles */
   --font-body: "Zen Kaku Gothic New", sans-serif; /* for text */
   --font-mono: "Roboto Mono Variable", monospace; /* for labels */
+
+  --font-weight-title: 700; /* bold */
+  --font-weight-body: 500; /* medium */
 }
 
 * {
@@ -23,10 +26,20 @@
   -moz-user-select: none;
 }
 
+/* Apply font weights globally */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-title);
+}
+
+p, li, span, a {
+  font-weight: var(--font-weight-body);
+}
+
 body {
   background-color: var(--color-white);
   color: var(--color-dark-gray);
   font-family: var(--font-body);
+  font-weight: var(--font-weight-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
