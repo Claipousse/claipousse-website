@@ -96,8 +96,8 @@ export default function WindowAbout() {
           <li>Omori</li>
           <li>Oneshot</li>
           <li>Plants vs. Zombies GW2</li>
+          <li>Minecraft</li>
           <li>Dofus</li>
-          <li>Overwatch (toxic relationship tho...)</li>
         </ul>
         
         <p

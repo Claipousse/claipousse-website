@@ -27,14 +27,14 @@ const WINDOW_SIZES = {
         maxHeight: '65vh'
     },
     links: {
-        maxWidth: 'clamp(550px, 55vw, 850px)',
-        minWidth: '550px',
-        maxHeight: '85vh'
+        maxWidth: 'clamp(350px, 55vw, 850px)',
+        minWidth: '350px',
+        maxHeight: '65vh'
     },
     work: {
-        maxWidth: 'clamp(550px, 55vw, 850px)',
-        minWidth: '550px',
-        maxHeight: '85vh'
+        maxWidth: 'clamp(750px, 60vw, 1000px)',
+        minWidth: '600px',
+        maxHeight: '65vh'
     },
     faq: {
         maxWidth: 'clamp(550px, 55vw, 850px)',
