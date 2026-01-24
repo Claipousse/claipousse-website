@@ -27,7 +27,7 @@ const WINDOW_SIZES = {
         maxHeight: '65vh'
     },
     links: {
-        maxWidth: 'clamp(350px, 55vw, 850px)',
+        maxWidth: 'clamp(350px, 35vw, 550px)',
         minWidth: '350px',
         maxHeight: '65vh'
     },
