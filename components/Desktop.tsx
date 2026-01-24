@@ -37,9 +37,9 @@ const WINDOW_SIZES = {
         maxHeight: '65vh'
     },
     faq: {
-        maxWidth: 'clamp(550px, 55vw, 850px)',
-        minWidth: '550px',
-        maxHeight: '85vh'
+        maxWidth: 'clamp(650px, 65vw, 1050px)',
+        minWidth: '650px',
+        maxHeight: '50vh'
     },
     contact: {
         maxWidth: 'clamp(550px, 55vw, 850px)',
@@ -204,7 +204,7 @@ export default function DesktopView() {
             <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40">
                 <p className="text-white font-mono text-sm">© 2025 claipousse</p>
             </div>
-            
+
             {/* render open windows */}
             {openWindows.map((window) => (
                 <Window
