@@ -11,14 +11,13 @@ interface FAQItem {
 const FAQ_DATA: FAQItem[] = [
   {
     id: 1,
-    question: "what ressources did you use for this website ?",
+    question: "what ressources & inspirations did you use for this website ?",
     points: [
       "icons are from icons8.com",
       "sfx are either from zapslat.com or oneshot's sfx",
       "the background and mewo (the black cat) are from omori",
       "toro inoue (the silly cat who plays music) is from meltgui",
-      "niko (the cat on the bottom left) is from a pinterest post",
-      "i also "
+      "niko (the cat on the bottom left) is from a pinterest post"
     ]
   },
   {
@@ -88,12 +87,14 @@ export default function WindowFaq() {
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 transition: 'all 0.2s ease',
-                borderRadius: '6px'
+                borderRadius: '4px',
+                position:'relative',
+                zIndex: 2
               }}
             >
               <span
                 style={{
-                  fontSize: 'clamp(0.8rem, 1.3vw, 0.95rem)',
+                  fontSize: 'clamp(0.75rem, 1.2vw, 0.875rem)',
                   fontFamily: 'var(--font-mono)',
                   fontWeight: 700,
                   color: '#424242'
@@ -121,7 +122,10 @@ export default function WindowFaq() {
                   padding: '1rem 1.25rem',
                   animation: 'slideDown 0.3s ease-out',
                   borderRadius: '6px',
-                  marginTop: '0.5rem'
+                  marginTop: '-8px',
+                  border: '2px solid #e2d3ff',
+                  position:'relative',
+                  zIndex:1
                 }}
               >
                 <ul
@@ -131,7 +135,7 @@ export default function WindowFaq() {
                     margin: 0,
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '0.5rem'
+                    gap: '0.35rem'
                   }}
                 >
                   {item.points.map((point, idx) => (
@@ -159,7 +163,9 @@ export default function WindowFaq() {
                           fontSize: 'clamp(0.7rem, 1vw, 0.8rem)',
                           lineHeight: '1.5',
                           fontFamily: 'var(--font-mono)',
-                          color: '#424242'
+                          color: '#424242',
+                          wordWrap: 'break-word',
+                          overflowWrap: 'break-word'
                         }}
                       >
                         {point}

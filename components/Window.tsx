@@ -61,6 +61,7 @@ export default function Window({
         <div className={`bg-white border-2 border-gray-light rounded-2xl ${isClosing ? 'window-close' : 'window-open'}`}
           style={{
             boxShadow: '0px 5px 0px rgba(0, 0, 0, 0.15)',
+            width: maxWidth,
             maxWidth: maxWidth,
             maxHeight: maxHeight,
             minWidth: minWidth,

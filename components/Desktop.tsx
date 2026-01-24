@@ -37,8 +37,8 @@ const WINDOW_SIZES = {
         maxHeight: '65vh'
     },
     faq: {
-        maxWidth: 'clamp(650px, 65vw, 1050px)',
-        minWidth: '650px',
+        maxWidth: 'clamp(00px, 65vw, 850px)',
+        minWidth: '550px',
         maxHeight: '50vh'
     },
     contact: {
@@ -202,7 +202,7 @@ export default function DesktopView() {
 
             {/* copyright at bottom - centered */}
             <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40">
-                <p className="text-white font-mono text-sm">© 2025 claipousse</p>
+                <p className="text-white font-mono text-sm">© 2026 claipousse</p>
             </div>
 
             {/* render open windows */}
