@@ -88,7 +88,7 @@ export default function WindowFaq() {
                 alignItems: 'center',
                 transition: 'all 0.2s ease',
                 borderRadius: '4px',
-                position:'relative',
+                position: 'relative',
                 zIndex: 2
               }}
             >
@@ -106,7 +106,7 @@ export default function WindowFaq() {
                 style={{
                   fontSize: '1.25rem',
                   color: '#424242',
-                  transition: 'transform 0.2s ease',
+                  transition: 'transform 0.3s ease',
                   transform: openItems.includes(item.id) ? 'rotate(180deg)' : 'rotate(0deg)'
                 }}
               >
@@ -114,83 +114,76 @@ export default function WindowFaq() {
               </span>
             </div>
 
-            {/* answer content */}
-            {openItems.includes(item.id) && (
-              <div
+            {/* answer content - GPU-accelerated animation */}
+            <div
+              style={{
+                transform: openItems.includes(item.id) ? 'scaleY(1)' : 'scaleY(0)',
+                transformOrigin: 'bottom',
+                overflow: 'hidden',
+                transition: 'transform 0.2s ease-in-out, padding 0.2s ease-in-out, border-width 0.2s ease-in-out, margin-top 0.2s ease-in-out, height 0.2s ease-in-out',
+                backgroundColor: '#ffffff',
+                padding: openItems.includes(item.id) ? '1rem 1.25rem' : '0 1.25rem',
+                borderRadius: '6px',
+                marginTop: openItems.includes(item.id) ? '-8px' : '0',
+                borderWidth: openItems.includes(item.id) ? '2px' : '0px',
+                borderStyle: 'solid',
+                borderColor: '#e2d3ff',
+                height: openItems.includes(item.id) ? 'auto' : '0',
+                position: 'relative',
+                zIndex: 1
+              }}
+            >
+              <ul
                 style={{
-                  backgroundColor: '#ffffff',
-                  padding: '1rem 1.25rem',
-                  animation: 'slideDown 0.3s ease-out',
-                  borderRadius: '6px',
-                  marginTop: '-8px',
-                  border: '2px solid #e2d3ff',
-                  position:'relative',
-                  zIndex:1
+                  listStyle: 'none',
+                  padding: 0,
+                  margin: 0,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.35rem'
                 }}
               >
-                <ul
-                  style={{
-                    listStyle: 'none',
-                    padding: 0,
-                    margin: 0,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '0.35rem'
-                  }}
-                >
-                  {item.points.map((point, idx) => (
-                    <li
-                      key={idx}
+                {item.points.map((point, idx) => (
+                  <li
+                    key={idx}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '0.75rem'
+                    }}
+                  >
+                    {/* round bullet */}
+                    <span
                       style={{
-                        display: 'flex',
-                        alignItems: 'flex-start',
-                        gap: '0.75rem'
+                        width: '6px',
+                        height: '6px',
+                        backgroundColor: '#424242',
+                        borderRadius: '50%',
+                        marginTop: '0.45rem',
+                        flexShrink: 0
+                      }}
+                    />
+                    <span
+                      style={{
+                        fontSize: 'clamp(0.7rem, 1vw, 0.8rem)',
+                        lineHeight: '1.5',
+                        fontFamily: 'var(--font-mono)',
+                        color: '#424242',
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word'
                       }}
                     >
-                      {/* round bullet */}
-                      <span
-                        style={{
-                          width: '6px',
-                          height: '6px',
-                          backgroundColor: '#424242',
-                          borderRadius: '50%',
-                          marginTop: '0.45rem',
-                          flexShrink: 0
-                        }}
-                      />
-                      <span
-                        style={{
-                          fontSize: 'clamp(0.7rem, 1vw, 0.8rem)',
-                          lineHeight: '1.5',
-                          fontFamily: 'var(--font-mono)',
-                          color: '#424242',
-                          wordWrap: 'break-word',
-                          overflowWrap: 'break-word'
-                        }}
-                      >
-                        {point}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+                      {point}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         ))}
       </div>
 
       <style jsx>{`
-        @keyframes slideDown {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
         div {
           scrollbar-width: thin;
           scrollbar-color: #cecece transparent;

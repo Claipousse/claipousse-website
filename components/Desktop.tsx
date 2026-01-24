@@ -42,9 +42,9 @@ const WINDOW_SIZES = {
         maxHeight: '50vh'
     },
     contact: {
-        maxWidth: 'clamp(550px, 55vw, 850px)',
-        minWidth: '550px',
-        maxHeight: '85vh'
+        maxWidth: 'clamp(350px, 50vw, 350px)',
+        minWidth: '350px',
+        maxHeight: '50vh'
     }
 };
 
