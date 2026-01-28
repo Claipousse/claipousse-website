@@ -114,23 +114,22 @@ export default function WindowFaq() {
               </span>
             </div>
 
-            {/* answer content - GPU-accelerated animation */}
+            {/* answer content*/}
             <div
               style={{
-                transform: openItems.includes(item.id) ? 'scaleY(1)' : 'scaleY(0)',
-                transformOrigin: 'bottom',
+                maxHeight: openItems.includes(item.id) ? '500px' : '0',
                 overflow: 'hidden',
-                transition: 'transform 0.2s ease-in-out, padding 0.2s ease-in-out, border-width 0.2s ease-in-out, margin-top 0.2s ease-in-out, height 0.2s ease-in-out',
+                transition: 'max-height 0.15s linear, padding 0.15s linear, border-width 0.15s linear',
                 backgroundColor: '#ffffff',
                 padding: openItems.includes(item.id) ? '1rem 1.25rem' : '0 1.25rem',
                 borderRadius: '6px',
-                marginTop: openItems.includes(item.id) ? '-8px' : '0',
+                marginTop: '-7px',
                 borderWidth: openItems.includes(item.id) ? '2px' : '0px',
                 borderStyle: 'solid',
                 borderColor: '#e2d3ff',
-                height: openItems.includes(item.id) ? 'auto' : '0',
                 position: 'relative',
-                zIndex: 1
+                zIndex: 1,
+                boxSizing: 'border-box'
               }}
             >
               <ul
