@@ -8,26 +8,24 @@ import WindowAbout from './WindowAbout';
 import WindowLinks from './WindowLinks';
 import WindowWork from './WindowWork';
 import WindowFaq from './WindowFaq';
-import WindowContact from './WindowContact';
 
 //spawn points inside main frame area
 const SPAWN_POINTS = {
     about: { x: 0, y: 0 },
     links: { x: 0, y: 0 },
     work: { x: 0, y: 0 },
-    faq: { x: 0, y: 0 },
-    contact: { x: 0, y: 0 }
+    faq: { x: 0, y: 0 }
 };
 
 //window sizes configuration
 const WINDOW_SIZES = {
     about: {
-        maxWidth: 'clamp(500px, 50vw, 750px)',
+        maxWidth: 'clamp(500px, 55vw, 750px)',
         minWidth: '500px',
         maxHeight: '65vh'
     },
     links: {
-        maxWidth: 'clamp(350px, 35vw, 550px)',
+        maxWidth: 'clamp(375px, 35vw, 550px)',
         minWidth: '350px',
         maxHeight: '65vh'
     },
@@ -37,18 +35,13 @@ const WINDOW_SIZES = {
         maxHeight: '65vh'
     },
     faq: {
-        maxWidth: 'clamp(00px, 65vw, 850px)',
+        maxWidth: 'clamp(560px, 55vw, 800px)',
         minWidth: '550px',
-        maxHeight: '50vh'
-    },
-    contact: {
-        maxWidth: 'clamp(350px, 50vw, 350px)',
-        minWidth: '350px',
         maxHeight: '50vh'
     }
 };
 
-type WindowType = 'about' | 'links' | 'work' | 'faq' | 'contact';
+type WindowType = 'about' | 'links' | 'work' | 'faq';
 
 interface WindowState {
     type: WindowType;
@@ -61,8 +54,7 @@ export default function DesktopView() {
         { name: 'about', file: 'about.webp', label: 'about' },
         { name: 'links', file: 'links.webp', label: 'links' },
         { name: 'work', file: 'work.webp', label: 'work' },
-        { name: 'faq', file: 'faq.webp', label: 'faq' },
-        { name: 'contact', file: 'contact.webp', label: 'contact' }
+        { name: 'faq', file: 'faq.webp', label: 'faq' }
     ];
 
     const [openWindows, setOpenWindows] = useState<WindowState[]>([]);
@@ -120,7 +112,6 @@ export default function DesktopView() {
             case 'links': return <WindowLinks />;
             case 'work': return <WindowWork />;
             case 'faq': return <WindowFaq />;
-            case 'contact': return <WindowContact />;
         }
     };
 
@@ -131,8 +122,8 @@ export default function DesktopView() {
                 className="w-full bg-white border-2 border-gray-light rounded-2xl transition-flat relative z-10"
                 style={{
                     boxShadow: '0px 5px 0px rgba(0, 0, 0, 0.15)',
-                    maxWidth: 'clamp(550px, 55vw, 850px)',
-                    padding: 'clamp(2rem, 4vw, 4rem) clamp(2rem, 3vw, 3rem)'
+                    maxWidth: 'clamp(500px, 50vw, 750px)',
+                    padding: 'clamp(2rem, 4vw, 4rem) clamp(2rem, 3vw, 4rem)'
                 }}
             >
                 {/* grey bar at top */}
@@ -143,26 +134,26 @@ export default function DesktopView() {
                     <Mewo />
                 </div>
 
-                <div className="flex flex-col items-center" style={{ gap: 'clamp(2rem, 3vw, 3rem)', marginTop: 'clamp(3rem, 4vw, 4rem)' }}>
+                <div className="flex flex-col items-center" style={{ gap: 'clamp(2rem, 3vw, 3rem)', marginTop: 'clamp(3rem, 5vw, 5rem)' }}>
 
                     {/* centered text responsive */}
                     <div className="text-center">
                         <h1
                             className="font-body font-bold mb-3"
-                            style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', fontFamily: 'var(--font-title)' }}
+                            style={{ fontSize: 'clamp(2.5rem, 4.5vw, 4.5rem)', fontFamily: 'var(--font-title)' }}
                         >
                             hi! <span className="text-accent font-bold">i'm claipousse</span>
                         </h1>
                         <p
                             className="text-dark-gray"
-                            style={{ fontSize: 'clamp(1.25rem, 2.5vw, 1.875rem)', fontFamily: 'var(--font-body)' }}
+                            style={{ fontSize: 'clamp(1.25rem, 2.25vw, 1.875rem)', fontFamily: 'var(--font-body)' }}
                         >
                             student in cybersecurity, cat enjoyer
                         </p>
                     </div>
 
                     {/* icons with fluid sizing */}
-                    <div className="flex" style={{ gap: 'clamp(1rem, 1.5vw, 1.5rem)', marginTop: 'clamp(1rem, 2vw, 2rem)' }}>
+                    <div className="flex" style={{ gap: 'clamp(1rem, 2vw, 3rem)', marginTop: 'clamp(1rem, 2vw, 1rem)' }}>
                         {icons.map((icon) => (
                             <div
                                 key={icon.name}
