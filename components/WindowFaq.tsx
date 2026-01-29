@@ -13,10 +13,10 @@ const FAQ_DATA: FAQItem[] = [
     id: 1,
     question: "what ressources & inspirations did you use for this website ?",
     points: [
-      "icons are from icons8.com",
-      "sfx are either from zapslat.com or oneshot's sfx",
+      "icons are from <a href='https://icons8.com' target='_blank'>icons8.com</a>",
+      "sfx are either from <a href='https://www.zapsplat.com/' target='_blank'>zapsplat.com</a> or <a href='https://sounds.spriters-resource.com/pc_computer/oneshotsteamversion/asset/416943/' target='_blank'>oneshot's sfx</a>",
       "the background and mewo (the black cat) are from omori",
-      "toro inoue (the silly cat who plays music) is from meltgui",
+      "toro inoue (the silly cat who plays music) is from <a href='https://tenor.com/fr/users/meltgui' target='_blank'>meltpink</a>",
       "niko (the cat on the bottom left) is from a pinterest post"
     ]
   },
@@ -32,7 +32,7 @@ const FAQ_DATA: FAQItem[] = [
     id: 3,
     question: "do you want to play together ?",
     points: [
-      "sure!! send me a message on steam or discord if you want :)"
+      "sure!! send me a message on <a href='https://steamcommunity.com/id/claipousse' target='_blank'>steam</a> or <a href='https://discord.com/users/609413089938505728' target='_blank'>discord</a> if you want :)"
     ]
   },
   {
@@ -171,9 +171,8 @@ export default function WindowFaq() {
                         wordWrap: 'break-word',
                         overflowWrap: 'break-word'
                       }}
-                    >
-                      {point}
-                    </span>
+                      dangerouslySetInnerHTML={{__html: point}}
+                    />
                   </li>
                 ))}
               </ul>
@@ -182,7 +181,17 @@ export default function WindowFaq() {
         ))}
       </div>
 
-      <style jsx>{`
+      <style jsx global>{`
+        a {
+          color: #5136f0;
+          text-decoration: underline;
+          font-weight: 700;
+        }
+
+        a:hover {
+          opacity: 0.8;
+        }
+
         div {
           scrollbar-width: thin;
           scrollbar-color: #cecece transparent;

@@ -138,9 +138,9 @@ export default function WindowAbout() {
           <li>Chainsaw Man</li>
           <li>Death Note</li>
           <li>Hajime No Ippo</li>
+          <li>Full Metal Alchemist</li>
           <li>Dungeon Meshi</li>
           <li>Shino can&apos;t say her name</li>
-          <li>The boy and the dog</li>
         </ul>
         
         <p
