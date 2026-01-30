@@ -45,7 +45,7 @@ export default function WindowWork() {
   return (
     <div style={{ paddingLeft: '2rem' }}>
       {/* cybersecurity */}
-      <div className="mb-14 mt-6">
+      <div className="mb-12 mt-6">
         <h2
           className="font-bold mb-2"
           style={{
@@ -60,7 +60,7 @@ export default function WindowWork() {
           className="text-dark-gray mb-3"
           style={{
             fontSize: 'clamp(1rem, 1.75vw, 1.25rem)',
-            lineHeight: '1.6',
+            lineHeight: '1.4',
             fontFamily: 'var(--font-body)'
           }}
         >
@@ -76,10 +76,10 @@ export default function WindowWork() {
             paddingLeft: '1.5rem'
           }}
         >
-          <li>am taking classes and practising on CTFs on tryhackme and picoCTF (I'll move on to htb and rootme once I've covered the platforms mentioned above)</li>
+          <li>am taking classes and practising on CTFs independently</li>
           <li>have participated in CTFs and bug bounties in my city (reserved for students).</li>
-          <li>administer the VPS for my school's CTF site (with another student, who is, to be honest, way better than me, we configured the SSH keys and VPS backups together).</li>
-          <li>use arch, btw.</li>
+          <li>administer the VPS for my school's CTF website with another student</li>
+          <li>use <s>arch</s> mint, btw.</li>
         </ul>
       </div>
 
@@ -99,7 +99,7 @@ export default function WindowWork() {
           className="text-dark-gray"
           style={{
             fontSize: 'clamp(1rem, 1.75vw, 1.25rem)',
-            lineHeight: '1.6',
+            lineHeight: '1.4',
             fontFamily: 'var(--font-body)'
           }}
         >

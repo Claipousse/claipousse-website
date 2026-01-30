@@ -51,7 +51,7 @@ export default function WindowLinks() {
           <span className="font-bold text-dark-gray text-center" style={{ fontFamily: 'var(--font-mono)', fontSize: 'clamp(0.75rem, 1vw, 1rem)' }}>instagram</span>
         </a>
 
-        <a href="https://youtube.com/@YOUR_CHANNEL" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105" style={{ gap: 'clamp(0.25rem, 0.5vw, 0.5rem)' }}>
+        <a href="https://youtube.com/@claipousse" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center cursor-pointer transition-transform hover:scale-105" style={{ gap: 'clamp(0.25rem, 0.5vw, 0.5rem)' }}>
           <div style={{ width: 'clamp(4rem, 6vw, 6rem)', height: 'clamp(4rem, 6vw, 6rem)' }}>
             <Image src="/images/socials/youtube.webp" alt="youtube" width={128} height={128} className="w-full h-full object-contain" draggable={false} style={{ filter: 'drop-shadow(0px 8px 0px rgba(0, 0, 0, 0.25))' }} />
           </div>

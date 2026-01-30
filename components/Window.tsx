@@ -52,6 +52,7 @@ export default function Window({
     <Draggable
       nodeRef={nodeRef}
       handle=".drag-handle"
+      cancel=".close-button"
       defaultPosition={{ x: initialX, y: initialY }}
       onStart={onFocus}
       bounds="parent"
@@ -72,7 +73,7 @@ export default function Window({
           <div className="drag-handle bg-dark-gray rounded-t-xl h-14 flex items-center justify-between px-4 cursor-move select-none">
             <span className="text-white font-mono text-lg" style={{ fontFamily: 'var(--font-mono)' }}>{title}</span>
             <button
-              className="text-white font-mono text-lg transition-transform hover:scale-110"
+              className="close-button text-white font-mono text-lg transition-transform hover:scale-110"
               onClick={(e) => {
                 e.stopPropagation();
                 handleClose();
