@@ -54,28 +54,28 @@ const PROJECT_DATA: ProjectData[] = [
     image: '/images/projects/ledgerone.png',
     title: 'LedgerOne',
     paragraph1: "a manual expense manager web app, coded for a test to join my school's junior enterprise. i made it using vanilla frontend (html/css/js) and python for the backend, with fastAPI, sqlite, etc",
-    paragraph2: "i don't host it online, you can test it locally via the github repository here."
+    paragraph2: "i don't host it online, you can test it locally via the github repository <a href='https://github.com/Claipousse/LedgerOne' target='_blank'>here</a>."
   },
   {
     id: 2,
     image: '/images/projects/kattack.png',
     title: 'Kattack',
-    paragraph1: "a vampire survivor-like browser game made with kaplay game engine. the game is abandonware, unfinished, and ugly asf, but a fun break from my usual projects. you can play this shitty game here.",
-    paragraph2: 'i made the game with kaplay, which is a javascript game engine (pretty fun to use!!), you can check the github repository here.'
+    paragraph1: "a vampire survivor-like browser game made with kaplay game engine. the game is abandonware, unfinished, and ugly asf, but a fun break from my usual projects. you can play this shitty game on <a href='https://claipousse.itch.io/kattack' target='_blank'>itch.io</a>.",
+    paragraph2: "i made the game with kaplay, which is a javascript game engine (pretty fun to use!!), you can check the github repository <a href='https://github.com/Claipousse/kattack' target='_blank'>here</a>."
   },
   {
     id: 3,
     image: '/images/projects/wsc.png',
     title: 'Windows Storage Cleaner',
     paragraph1: "a cli tool written in Rust that deletes temporary files and directories, a lot of browser caches, and other windows junk to free some space.",
-    paragraph2: "you can download the .exe file here, and get the source code here if you think it's a nasty, mischievous virus :D"
+    paragraph2: "you can download the .exe file <a href='https://github.com/Claipousse/Windows-System-Cleaner/releases/tag/v0.1.2' target='_blank'>here</a>, and check the <a href='https://github.com/Claipousse/Windows-System-Cleaner' target='_blank'>source code</a> if you think it's a nasty, mischievous virus :D"
   },
   {
     id: 4,
     image: '/images/projects/web.png',
     title: 'This Website',
     paragraph1: "i wanted to create a small website to add to my social media bios for something more personalized :) i also wanted to do it to learn how to use react and how to host a website.",
-    paragraph2: "i explain in more detail about the stack i used in the faq, but again, i let the source code here."
+    paragraph2: "i explain in more detail about the stack i used in the faq, but again, i let the source code <a href='https://github.com/Claipousse/claipousse-website' target='_blank'>here</a>."
   }
 ];
 
@@ -139,10 +139,10 @@ export default function WindowWork() {
         {/* project cards */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(1.5rem, 3vw, 2.5rem)' }}>
           {PROJECT_DATA.map((project) => (
-            <div 
+            <div
               key={project.id}
-              style={{ 
-                display: 'flex', 
+              style={{
+                display: 'flex',
                 gap: 'clamp(1rem, 2vw, 1.5rem)',
                 alignItems: 'flex-start'
               }}
@@ -191,8 +191,7 @@ export default function WindowWork() {
                     fontFamily: 'var(--font-body)',
                     marginBottom: 'clamp(0.5rem, 1vw, 0.75rem)'
                   }}
-                >
-                  {project.paragraph1}
+                  dangerouslySetInnerHTML={{ __html: project.paragraph1 }}>
                 </p>
 
                 {/* paragraph 2 */}
@@ -203,8 +202,8 @@ export default function WindowWork() {
                     lineHeight: '1.5',
                     fontFamily: 'var(--font-body)'
                   }}
-                >
-                  {project.paragraph2}
+
+                  dangerouslySetInnerHTML={{ __html: project.paragraph2 }}>
                 </p>
               </div>
             </div>
@@ -236,7 +235,7 @@ export default function WindowWork() {
         </p>
 
         {/* pc photos grid */}
-        <div 
+        <div
           className="grid grid-cols-3"
           style={{
             gap: 'clamp(0.75rem, 1.5vw, 1.5rem)',
@@ -298,7 +297,17 @@ export default function WindowWork() {
         document.body
       )}
 
-      <style jsx>{`
+      <style jsx global>{`
+        a {
+          color: #5136f0;
+          text-decoration: underline;
+          font-weight: 700;
+        }
+
+        a:hover {
+          opacity: 0.8;
+        }
+
         @keyframes fadeIn {
           from {
             opacity: 0;
