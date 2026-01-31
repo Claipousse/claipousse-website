@@ -13,24 +13,33 @@ interface PCData {
   description: string;
 }
 
+//struct for coding projects
+interface ProjectData {
+  id: number;
+  image: string;
+  title: string;
+  paragraph1: string;
+  paragraph2: string;
+}
+
 //we write each infos for each pc, then i'll use it later
 const PC_DATA: PCData[] = [
   {
-    id: 1, //first one
+    id: 1,
     image: '/images/other/pc1.webp',
     name: 'My pc :)',
     components: ['[Component 1]', '[Component 2]', '[Component 3]', '[Component 4]'],
     description: '[Description paragraph for PC 1]'
   },
   {
-    id: 2, //second one
+    id: 2,
     image: '/images/other/pc2.webp',
     name: 'Basic V1',
     components: ['[Component 1]', '[Component 2]', '[Component 3]', '[Component 4]'],
     description: '[Description paragraph for PC 2]'
   },
   {
-    id: 3, //third one
+    id: 3,
     image: '/images/other/pc3.webp',
     name: 'Snow White V1',
     components: ['[Component 1]', '[Component 2]', '[Component 3]', '[Component 4]'],
@@ -38,8 +47,39 @@ const PC_DATA: PCData[] = [
   }
 ];
 
+//coding projects data
+const PROJECT_DATA: ProjectData[] = [
+  {
+    id: 1,
+    image: '/images/projects/ledgerone.png',
+    title: 'LedgerOne',
+    paragraph1: "a manual expense manager web app, coded for a test to join my school's junior enterprise. i made it using vanilla frontend (html/css/js) and python for the backend, with fastAPI, sqlite, etc",
+    paragraph2: "i don't host it online, you can test it locally via the github repository here."
+  },
+  {
+    id: 2,
+    image: '/images/projects/kattack.png',
+    title: 'Kattack',
+    paragraph1: "a vampire survivor-like browser game made with kaplay game engine. the game is abandonware, unfinished, and ugly asf, but a fun break from my usual projects. you can play this shitty game here.",
+    paragraph2: 'i made the game with kaplay, which is a javascript game engine (pretty fun to use!!), you can check the github repository here.'
+  },
+  {
+    id: 3,
+    image: '/images/projects/wsc.png',
+    title: 'Windows Storage Cleaner',
+    paragraph1: "a cli tool written in Rust that deletes temporary files and directories, a lot of browser caches, and other windows junk to free some space.",
+    paragraph2: "you can download the .exe file here, and get the source code here if you think it's a nasty, mischievous virus :D"
+  },
+  {
+    id: 4,
+    image: '/images/projects/web.png',
+    title: 'This Website',
+    paragraph1: "i wanted to create a small website to add to my social media bios for something more personalized :) i also wanted to do it to learn how to use react and how to host a website.",
+    paragraph2: "i explain in more detail about the stack i used in the faq, but again, i let the source code here."
+  }
+];
+
 export default function WindowWork() {
-  //for the modal, to know what info to show
   const [selectedPC, setSelectedPC] = useState<PCData | null>(null);
 
   return (
@@ -86,7 +126,7 @@ export default function WindowWork() {
       {/* coding projects */}
       <div className="mb-14">
         <h2
-          className="font-bold mb-2"
+          className="font-bold mb-4"
           style={{
             fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
             fontFamily: 'var(--font-mono)',
@@ -95,41 +135,81 @@ export default function WindowWork() {
         >
           CODING PROJECTS
         </h2>
-        <p
-          className="text-dark-gray"
-          style={{
-            fontSize: 'clamp(1rem, 1.75vw, 1.25rem)',
-            lineHeight: '1.4',
-            fontFamily: 'var(--font-body)'
-          }}
-        >
-          many projects i've done have been to learn new programming languages, but there are some that were made to solve real issues such as...
-        </p>
-        <ul
-          className="text-dark-gray mb-6"
-          style={{
-            fontSize: 'clamp(1rem, 1.75vw, 1.25rem)',
-            lineHeight: '1.4',
-            fontFamily: 'var(--font-body)',
-            listStyle: 'disc',
-            paddingLeft: '1.5rem'
-          }}
-        >
-          <li>an expense manager web app, coded for a test to join my school's junior enterprise. made using vanilla js and python with fastAPI</li>
-          <li>a vampire survivor-like browser game made with kaplay. the game is abandonware, unfinished, and ugly asf, but a fun break from my usual projects. you can play this shitty game here.</li>
-          <li>a cli tool written in Rust that deletes temporary files and directories, browser caches, and other windows junk to free some space.</li>
-          <li>this website ! made it with react and next.js, more informations about the assets i used in the faq.</li>
-        </ul>
-        <p
-          className="text-dark-gray"
-          style={{
-            fontSize: 'clamp(1rem, 1.75vw, 1.25rem)',
-            lineHeight: '1.6',
-            fontFamily: 'var(--font-body)'
-          }}
-        >
-          for more information and more projects, you can check out my github if you want.
-        </p>
+
+        {/* project cards */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(1.5rem, 3vw, 2.5rem)' }}>
+          {PROJECT_DATA.map((project) => (
+            <div 
+              key={project.id}
+              style={{ 
+                display: 'flex', 
+                gap: 'clamp(1rem, 2vw, 1.5rem)',
+                alignItems: 'flex-start'
+              }}
+            >
+              {/* project image */}
+              <div
+                style={{
+                  width: 'clamp(150px, 18vw, 220px)',
+                  height: 'clamp(150px, 18vw, 220px)',
+                  flexShrink: 0,
+                  position: 'relative',
+                  borderRadius: '0.75rem',
+                  overflow: 'hidden',
+                }}
+              >
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                  sizes="180px"
+                />
+              </div>
+
+              {/* project info */}
+              <div style={{ flex: 1 }}>
+                {/* title */}
+                <h3
+                  style={{
+                    fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
+                    fontFamily: 'var(--font-body)',
+                    fontWeight: 700,
+                    color: '#5136f0',
+                    marginBottom: 'clamp(0.5rem, 1vw, 0.75rem)'
+                  }}
+                >
+                  {project.title}
+                </h3>
+
+                {/* paragraph 1 */}
+                <p
+                  className="text-dark-gray"
+                  style={{
+                    fontSize: 'clamp(0.9rem, 1.5vw, 1.125rem)',
+                    lineHeight: '1.5',
+                    fontFamily: 'var(--font-body)',
+                    marginBottom: 'clamp(0.5rem, 1vw, 0.75rem)'
+                  }}
+                >
+                  {project.paragraph1}
+                </p>
+
+                {/* paragraph 2 */}
+                <p
+                  className="text-dark-gray"
+                  style={{
+                    fontSize: 'clamp(0.9rem, 1.5vw, 1.125rem)',
+                    lineHeight: '1.5',
+                    fontFamily: 'var(--font-body)'
+                  }}
+                >
+                  {project.paragraph2}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* services */}
