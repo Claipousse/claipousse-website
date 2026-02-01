@@ -22,7 +22,7 @@ const WINDOW_SIZES = {
     about: {
         maxWidth: 'clamp(500px, 55vw, 750px)',
         minWidth: '500px',
-        maxHeight: '65vh'
+        maxHeight: 'clamp(400px, 45vw, 600px)'
     },
     links: {
         maxWidth: 'clamp(375px, 35vw, 550px)',
@@ -30,14 +30,14 @@ const WINDOW_SIZES = {
         maxHeight: '65vh'
     },
     work: {
-        maxWidth: 'clamp(750px, 60vw, 1000px)',
-        minWidth: '600px',
-        maxHeight: '65vh'
+        maxWidth: 'clamp(650px, 60vw, 850px)',
+        minWidth: '650px',
+        maxHeight: 'clamp(400px, 45vw, 600px)'
     },
     faq: {
-        maxWidth: 'clamp(560px, 55vw, 800px)',
+        maxWidth: 'clamp(550px, 55vw, 700px)',
         minWidth: '550px',
-        maxHeight: '50vh'
+        maxHeight: '43vh' //like this height don't change with opening tabs
     }
 };
 
