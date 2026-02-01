@@ -11,7 +11,7 @@ interface FAQItem {
 const FAQ_DATA: FAQItem[] = [
   {
     id: 1,
-    question: "what ressources & inspirations did you use for this website ?",
+    question: "what ressources did you use for this website ?",
     points: [
       "icons are from <a href='https://icons8.com' target='_blank'>icons8.com</a>",
       "sfx are either from <a href='https://www.zapsplat.com/' target='_blank'>zapsplat.com</a> or <a href='https://sounds.spriters-resource.com/pc_computer/oneshotsteamversion/asset/416943/' target='_blank'>oneshot's sfx</a>",
@@ -22,7 +22,7 @@ const FAQ_DATA: FAQItem[] = [
   },
   {
     id: 2,
-    question: "what langages did you use to this website ?",
+    question: "what stack did you use to this website ?",
     points: [
       "i used react, next.js and tailwind to make this website",
       "to make the windows movable, i used the react-draggable library."
@@ -71,7 +71,7 @@ export default function WindowFaq() {
   };
 
   return (
-    <div>
+    <div className="window-content">
       {/* faq list */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         {FAQ_DATA.map((item) => (
@@ -180,40 +180,6 @@ export default function WindowFaq() {
           </div>
         ))}
       </div>
-
-      <style jsx global>{`
-        a {
-          color: #5136f0;
-          text-decoration: underline;
-          font-weight: 700;
-        }
-
-        a:hover {
-          opacity: 0.8;
-        }
-
-        div {
-          scrollbar-width: thin;
-          scrollbar-color: #cecece transparent;
-        }
-
-        div::-webkit-scrollbar {
-          width: 8px;
-        }
-
-        div::-webkit-scrollbar-track {
-          background: transparent;
-        }
-
-        div::-webkit-scrollbar-thumb {
-          background-color: #cecece;
-          border-radius: 10px;
-        }
-
-        div::-webkit-scrollbar-thumb:hover {
-          background-color: #a4a4a4;
-        }
-      `}</style>
     </div>
   );
 }

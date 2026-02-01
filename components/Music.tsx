@@ -52,7 +52,7 @@ export default function MusicCat() {
 
     return (
         <div className="fixed bottom-8 right-8 z-50 cursor-pointer" onClick={handleClick} style={{width: 'clamp(4rem, 10vw, 7.5rem)', height: 'clamp(4rem, 10vw, 7.5rem)'}}>
-            <Image src={`/images/interactive/${isMuted ? 'music-off.webp' : 'music-on.webp'}`} alt="michael catson" width={120} height={120} className="object-contain hover:scale-110 transition-transform w-full h-full" draggable={false} unoptimized={true}/>
+            <Image src={`/images/interactive/${isMuted ? 'music-off.webp' : 'music-on.webp'}`} alt="michael catson" width={120} height={120} className="object-contain hover-scale-lg w-full h-full" draggable={false} unoptimized={true}/>
         </div>
     );
 }

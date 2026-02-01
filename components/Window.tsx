@@ -79,7 +79,7 @@ export default function Window({
           <div className="drag-handle bg-dark-gray rounded-t-xl h-14 flex items-center justify-between px-4 cursor-move select-none">
             <span className="text-white font-mono text-lg" style={{ fontFamily: 'var(--font-mono)' }}>{title}</span>
             <button
-              className="close-button text-white font-mono text-lg transition-transform hover:scale-110"
+              className="close-button text-white font-mono text-lg hover-scale-lg"
               onClick={(e) => {
                 e.stopPropagation();
                 handleClose();
@@ -90,7 +90,7 @@ export default function Window({
           </div>
 
           {/* content with scroll */}
-          <div className="overflow-y-auto p-6" style={{ maxHeight: `calc(${maxHeight} - 56px)`}}>
+          <div className="overflow-y-auto p-6 custom-scrollbar" style={{ maxHeight: `calc(${maxHeight} - 56px)`}}>
             {children}
           </div>
 

@@ -192,12 +192,7 @@ export default function DesktopView() {
             {/* main frame with fluid sizing */}
             <div
                 className="w-full bg-white border-2 border-gray-light rounded-2xl transition-flat relative z-10"
-                style={{
-                    boxShadow: '0px 5px 0px rgba(0, 0, 0, 0.15)',
-                    maxWidth: 'clamp(500px, 50vw, 750px)',
-                    padding: 'clamp(2rem, 4vw, 4rem) clamp(2rem, 3vw, 4rem)'
-                }}
-            >
+                style={{boxShadow: '0px 5px 0px rgba(0, 0, 0, 0.15)',maxWidth: 'clamp(500px, 50vw, 750px)',padding: 'clamp(2rem, 4vw, 4rem) clamp(2rem, 3vw, 4rem)'}}>
                 {/* grey bar at top */}
                 <div
                     className="bg-dark-gray rounded-t-xl border-gray-light absolute top-0 left-0 right-0 flex items-center justify-end pr-4"
@@ -210,16 +205,10 @@ export default function DesktopView() {
 
                     {/* centered text responsive */}
                     <div className="text-center">
-                        <h1
-                            className="font-body font-bold mb-3"
-                            style={{ fontSize: 'clamp(2.5rem, 4.5vw, 4.5rem)', fontFamily: 'var(--font-title)' }}
-                        >
+                        <h1 className="text-title font-bold mb-3">
                             hi! <span className="text-accent font-bold">i'm claipousse</span>
                         </h1>
-                        <p
-                            className="text-dark-gray"
-                            style={{ fontSize: 'clamp(1.25rem, 2.25vw, 1.875rem)', fontFamily: 'var(--font-body)' }}
-                        >
+                        <p className="text-subtitle text-dark-gray">
                             student in cybersecurity, cat enjoyer
                         </p>
                     </div>
@@ -229,31 +218,22 @@ export default function DesktopView() {
                         {icons.map((icon) => (
                             <div
                                 key={icon.name}
-                                className='flex flex-col items-center cursor-pointer transition-flat hover:scale-105'
+                                className='flex flex-col items-center cursor-pointer hover-scale'
                                 style={{ gap: 'clamp(0.25rem, 0.5vw, 0.5rem)' }}
                                 onClick={() => handleIconClick(icon.name as WindowType)}
                             >
                                 <div
                                     className="flex items-center justify-center"
-                                    style={{
-                                        width: 'clamp(4.5rem, 5.5vw, 6.5rem)',
-                                        height: 'clamp(4.5rem, 5.5vw, 6.5rem)'
-                                    }}
-                                >
+                                    style={{width: 'clamp(4.5rem, 5.5vw, 6.5rem)',height: 'clamp(4.5rem, 5.5vw, 6.5rem)'}}>
                                     <Image
                                         src={`/images/icons/${icon.file}`}
                                         alt={icon.name}
-                                        width={100}
-                                        height={100}
-                                        className="object-contain w-full h-full"
+                                        width={100} height={100}
+                                        className="object-contain w-full h-full drop-shadow-icon"
                                         draggable={false}
-                                        style={{ filter: 'drop-shadow(0px 8px 0px rgba(0, 0, 0, 0.25))' }}
                                     />
                                 </div>
-                                <span
-                                    className="font-bold text-dark-gray"
-                                    style={{ fontSize: 'clamp(0.875rem, 1.2vw, 1.125rem)', fontFamily: 'var(--font-mono)' }}
-                                >
+                                <span className="text-mono-md text-dark-gray">
                                     {icon.label}
                                 </span>
                             </div>

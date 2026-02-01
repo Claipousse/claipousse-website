@@ -45,39 +45,16 @@ const PROJECT_DATA: ProjectData[] = [
 
 export default function WindowWork() {
   return (
-    <div style={{ paddingLeft: '2rem' }}>
+    <div className="window-content" style={{ paddingLeft: '2rem' }}>
       {/* cybersecurity */}
       <div className="mb-12 mt-6">
-        <h2
-          className="font-bold mb-2"
-          style={{
-            fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-            fontFamily: 'var(--font-mono)',
-            letterSpacing: '0.05em'
-          }}
-        >
+        <h2 className="section-header mb-2">
           CYBERSECURITY
         </h2>
-        <p
-          className="text-dark-gray mb-3"
-          style={{
-            fontSize: 'clamp(1rem, 1.75vw, 1.25rem)',
-            lineHeight: '1.4',
-            fontFamily: 'var(--font-body)'
-          }}
-        >
+        <p className="text-body-lg-tight text-dark-gray mb-3">
           unfortunately, I won't be able to put much in it, mainly because I'm still learning about it. however i...
         </p>
-        <ul
-          className="text-dark-gray"
-          style={{
-            fontSize: 'clamp(1rem, 1.75vw, 1.25rem)',
-            lineHeight: '1.4',
-            fontFamily: 'var(--font-body)',
-            listStyle: 'disc',
-            paddingLeft: '1.5rem'
-          }}
-        >
+        <ul className="custom-list text-body-lg text-dark-gray">
           <li>am taking classes and practising on CTFs independently</li>
           <li>have participated in CTFs and bug bounties in my city (reserved for students).</li>
           <li>administer the VPS for my school's CTF website with another student</li>
@@ -87,14 +64,7 @@ export default function WindowWork() {
 
       {/* coding projects */}
       <div className="mb-14">
-        <h2
-          className="font-bold mb-4"
-          style={{
-            fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-            fontFamily: 'var(--font-mono)',
-            letterSpacing: '0.05em'
-          }}
-        >
+        <h2 className="section-header mb-4">
           CODING PROJECTS
         </h2>
 
@@ -146,24 +116,14 @@ export default function WindowWork() {
 
                 {/* paragraph 1 */}
                 <p
-                  className="text-dark-gray"
-                  style={{
-                    fontSize: 'clamp(0.9rem, 1.5vw, 1.125rem)',
-                    lineHeight: '1.5',
-                    fontFamily: 'var(--font-body)',
-                    marginBottom: 'clamp(0.5rem, 1vw, 0.75rem)'
-                  }}
+                  className="text-body-md text-dark-gray"
+                  style={{ marginBottom: 'clamp(0.5rem, 1vw, 0.75rem)' }}
                   dangerouslySetInnerHTML={{ __html: project.paragraph1 }}
                 />
 
                 {/* paragraph 2 */}
                 <p
-                  className="text-dark-gray"
-                  style={{
-                    fontSize: 'clamp(0.9rem, 1.5vw, 1.125rem)',
-                    lineHeight: '1.5',
-                    fontFamily: 'var(--font-body)'
-                  }}
+                  className="text-body-md text-dark-gray"
                   dangerouslySetInnerHTML={{ __html: project.paragraph2 }}
                 />
               </div>
@@ -172,55 +132,10 @@ export default function WindowWork() {
         </div>
 
         {/* conclusion paragraph */}
-        <p className="text-dark-gray" style={{
-            fontSize: 'clamp(1rem, 1.75vw, 1.25rem)',
-            lineHeight: '1.6',
-            fontFamily: 'var(--font-body)',
-            marginTop: 'clamp(1rem, 2vw, 1.5rem)'
-          }}
-        >
+        <p className="text-body-lg text-dark-gray" style={{ marginTop: 'clamp(1rem, 2vw, 1.5rem)' }}>
           you can see other projects i've done on my <a href='https://github.com/Claipousse' target='_blank'>github</a>, for now i'm only a beginner trying to get better :)
         </p>
       </div>
-
-      <style jsx global>{`
-        a {
-          color: #5136f0;
-          text-decoration: underline;
-          font-weight: 700;
-        }
-
-        a:hover {
-          opacity: 0.8;
-        }
-
-        ul li::marker {
-          font-size: 1.5em;
-          color: #424242;
-        }
-
-        div {
-          scrollbar-width: thin;
-          scrollbar-color: #cecece transparent;
-        }
-
-        div::-webkit-scrollbar {
-          width: 8px;
-        }
-
-        div::-webkit-scrollbar-track {
-          background: transparent;
-        }
-
-        div::-webkit-scrollbar-thumb {
-          background-color: #cecece;
-          border-radius: 10px;
-        }
-
-        div::-webkit-scrollbar-thumb:hover {
-          background-color: #a4a4a4;
-        }
-      `}</style>
     </div>
   );
 }

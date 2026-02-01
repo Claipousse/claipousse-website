@@ -10,12 +10,9 @@ export default function Mewo() {
 
      return (
         <div 
-            className="cursor-pointer hover:scale-110 transition-transform" 
+            className="cursor-pointer hover-scale-lg" 
             onClick={handleClick}
-            style={{
-                width: 'clamp(2rem, 3vw, 3rem)',
-                height: 'clamp(2rem, 3vw, 3rem)'
-            }}
+            style={{width: 'clamp(2rem, 3vw, 3rem)', height: 'clamp(2rem, 3vw, 3rem)'}}
         >
             <Image 
                 src="/images/interactive/mewo.webp" 
