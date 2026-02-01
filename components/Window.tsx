@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import Draggable from 'react-draggable';
+import Draggable, { DraggableEvent, DraggableData } from 'react-draggable';
 
 interface WindowProps {
   title: string;
@@ -48,13 +48,19 @@ export default function Window({
     }, 250);
   };
 
+  //handle drag stop - save position
+  const handleDragStop = (_e: DraggableEvent, data: DraggableData) => {
+    onPositionChange(data.x, data.y);
+  };
+
   return (
     <Draggable
       nodeRef={nodeRef}
       handle=".drag-handle"
       cancel=".close-button"
-      defaultPosition={{ x: initialX, y: initialY }}
+      position={{ x: initialX, y: initialY }}
       onStart={onFocus}
+      onStop={handleDragStop}
       bounds="parent"
     >
       <div ref={nodeRef} className="absolute" style={{ zIndex: zIndex }} onClick={onFocus}>

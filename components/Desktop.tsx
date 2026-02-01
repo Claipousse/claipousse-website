@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Mewo from './Mewo';
 import Window from './Window';
@@ -9,15 +9,15 @@ import WindowLinks from './WindowLinks';
 import WindowWork from './WindowWork';
 import WindowFaq from './WindowFaq';
 
-//spawn points inside main frame area
+//spawn points (x:0, y:0 = center of the page), these are %, not px, the conversion is made with convertSpawnPointsToPixels()
 const SPAWN_POINTS = {
-    about: { x: 0, y: 0 },
-    links: { x: 0, y: 0 },
-    work: { x: 0, y: 0 },
-    faq: { x: 0, y: 0 }
+    about: { x: -15, y: 5 },
+    links: { x: -10, y: -10 },
+    work: { x: 5, y: 3 },
+    faq: { x: 10, y: 10 }
 };
 
-//window sizes configuration
+//window sizes
 const WINDOW_SIZES = {
     about: {
         maxWidth: 'clamp(500px, 55vw, 750px)',
@@ -37,75 +37,147 @@ const WINDOW_SIZES = {
     faq: {
         maxWidth: 'clamp(550px, 55vw, 700px)',
         minWidth: '550px',
-        maxHeight: '43vh' //like this height don't change with opening tabs
+        maxHeight: '43vh'
     }
 };
 
-type WindowType = 'about' | 'links' | 'work' | 'faq';
+type WindowType = 'about' | 'links' | 'work' | 'faq'; //name of each windows
 
 interface WindowState {
     type: WindowType;
     position: { x: number; y: number };
-    zIndex: number;
+    zIndex: number; //stack
 }
 
 export default function DesktopView() {
-    const icons = [
+    const icons = [ //icons on the main frame
         { name: 'about', file: 'about.webp', label: 'about' },
         { name: 'links', file: 'links.webp', label: 'links' },
         { name: 'work', file: 'work.webp', label: 'work' },
         { name: 'faq', file: 'faq.webp', label: 'faq' }
     ];
 
-    const [openWindows, setOpenWindows] = useState<WindowState[]>([]);
+    const [openWindows, setOpenWindows] = useState<WindowState[]>([]); //open windows (in a array)
     const [highestZIndex, setHighestZIndex] = useState(100);
 
-    //open window (or bring to front if already open)
-    const handleIconClick = (type: WindowType) => {
-        const existingWindow = openWindows.find(w => w.type === type);
+    //need to comment this
+    const [windowPositions, setWindowPositions] = useState<Record<WindowType, { x: number; y: number }>>(() => {
+        if (typeof window === 'undefined') return {} as any;
+        return convertSpawnPointsToPixels();
+    });
 
-        if (existingWindow) {
-            //window already open, bring to front
+    // convert percentage spawn points to pixel coordinates
+    function convertSpawnPointsToPixels(): Record<WindowType, { x: number; y: number }> {
+        const vw = window.innerWidth; //width of the browser
+        const vh = window.innerHeight; //height of the browser
+        
+        const positions: Record<WindowType, { x: number; y: number }> = {} as any; //empty object, will store the converted coordinates
+        
+        Object.entries(SPAWN_POINTS).forEach(([type, point]) => { //object.entries convert object into array key/value
+            positions[type as WindowType] = {
+                //divided by 100 because it was a %, multiplied by the width/height of the viewport/browser
+                x: (point.x / 100) * vw,
+                y: (point.y / 100) * vh
+            };
+        });
+        return positions;
+    }
+
+    // after f5 or any refresh, we clear localstorage (used to store the position of the windows after closing them)
+    useEffect(() => {
+        Object.keys(SPAWN_POINTS).forEach(type => {
+            localStorage.removeItem(`window-${type}-position`);
+        });
+    }, []);
+
+    // recalculate spawn points on window resize
+    useEffect(() => {
+    const movedWindows = new Set<WindowType>();
+    const handleResize = () => {
+        if (movedWindows.size === 0) { //if localstorage never checked
+            Object.keys(SPAWN_POINTS).forEach(type => {
+                if (localStorage.getItem(`window-${type as WindowType}-position`)) {
+                    movedWindows.add(type as WindowType); //add the window in the set (4 in total)
+                }
+            });
+        }
+        const newDefaults = convertSpawnPointsToPixels();//convert % into px
+        setWindowPositions(prev => {
+            const updated = { ...prev };
+            Object.keys(newDefaults).forEach(type => {
+                const key = type as WindowType;
+                if (!movedWindows.has(key)) {
+                    updated[key] = newDefaults[key];
+                }
+            });
+            return updated;
+        });
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+}, []);
+
+    // open window (or bring to front if already open)
+    const handleIconClick = useCallback((type: WindowType) => {
+        const existingWindow = openWindows.find(w => w.type === type); //check if window already open
+        if (existingWindow) { //if so, we just bring it to the front
             handleWindowFocus(type);
-        } else {
-            //play open sound
+        } else { //if not, we open it, with an open sound
             const openSound = new Audio('/sfx/open.mp3');
             openSound.volume = 0.5;
             openSound.play();
+            // check in localstorage if window has been moved during this session
+            const savedPosition = localStorage.getItem(`window-${type}-position`);
+            const position = savedPosition 
+                ? JSON.parse(savedPosition)
+                : windowPositions[type];
 
-            //open new window
-            const spawnPoint = SPAWN_POINTS[type];
             setOpenWindows([...openWindows, {
                 type,
-                position: { ...spawnPoint },
+                position: { ...position },
                 zIndex: highestZIndex + 1
             }]);
             setHighestZIndex(highestZIndex + 1);
         }
-    };
+    }, [openWindows, highestZIndex, windowPositions]);
 
-    //close window
-    const handleWindowClose = (type: WindowType) => {
+    // close window
+    const handleWindowClose = useCallback((type: WindowType) => {
         setOpenWindows(openWindows.filter(w => w.type !== type));
-    };
+    }, [openWindows]);
 
-    //update window position
-    const handlePositionChange = (type: WindowType, x: number, y: number) => {
-        setOpenWindows(openWindows.map(w =>
-            w.type === type ? { ...w, position: { x, y } } : w
-        ));
-    };
+    // update window position in localstorage (cleared on f5)
+    const handlePositionChange = useCallback((type: WindowType, x: number, y: number) => {
+        const newPosition = { x, y };
+        localStorage.setItem(`window-${type}-position`, JSON.stringify(newPosition));
+        
+        // update state for current session
+        setWindowPositions(prev => ({
+            ...prev,
+            [type]: newPosition
+        }));
+        
+        // update openWindows
+        setOpenWindows(windows =>
+            windows.map(w =>
+                w.type === type ? { ...w, position: newPosition } : w
+            )
+        );
+    }, []);
 
-    //bring window to front
-    const handleWindowFocus = (type: WindowType) => {
+    // Bring window to front
+    const handleWindowFocus = useCallback((type: WindowType) => {
         const newZIndex = highestZIndex + 1;
-        setOpenWindows(openWindows.map(w =>
-            w.type === type ? { ...w, zIndex: newZIndex } : w
-        ));
+        setOpenWindows(windows =>
+            windows.map(w =>
+                w.type === type ? { ...w, zIndex: newZIndex } : w
+            )
+        );
         setHighestZIndex(newZIndex);
-    };
+    }, [highestZIndex, openWindows]);
 
-    //get window content component
+    // Get window content component
     const getWindowContent = (type: WindowType) => {
         switch (type) {
             case 'about': return <WindowAbout />;
