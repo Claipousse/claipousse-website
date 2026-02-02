@@ -1,9 +1,14 @@
+'use client';
+
 import Niko from './Niko';
 import Music from './Music';
 import Desktop from './Desktop';
 import Mobile from './Mobile';
+import { useExternalLinkClick } from '@/app/hooks/useExternalLinkClick';
 
 export default function CentralBox() {
+  useExternalLinkClick(); //click sound on every external links
+
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* animated video background */}

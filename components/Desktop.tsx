@@ -60,7 +60,7 @@ export default function DesktopView() {
     const [openWindows, setOpenWindows] = useState<WindowState[]>([]); //open windows (in a array)
     const [highestZIndex, setHighestZIndex] = useState(100);
 
-    //need to comment this
+    //store window positions
     const [windowPositions, setWindowPositions] = useState<Record<WindowType, { x: number; y: number }>>(() => {
         if (typeof window === 'undefined') return {} as any;
         return convertSpawnPointsToPixels();
@@ -125,7 +125,7 @@ export default function DesktopView() {
             handleWindowFocus(type);
         } else { //if not, we open it, with an open sound
             const openSound = new Audio('/sfx/open.mp3');
-            openSound.volume = 0.5;
+            openSound.volume = 0.4;
             openSound.play();
             // check in localstorage if window has been moved during this session
             const savedPosition = localStorage.getItem(`window-${type}-position`);
