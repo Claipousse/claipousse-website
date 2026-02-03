@@ -4,7 +4,7 @@ import Niko from './Niko';
 import Music from './Music';
 import Desktop from './Desktop';
 import Mobile from './Mobile';
-import { useExternalLinkClick } from '@/app/hooks/useExternalLinkClick';
+import { useExternalLinkClick } from '@/hooks/useExternalLinkClick';
 
 export default function CentralBox() {
   useExternalLinkClick(); //click sound on every external links
