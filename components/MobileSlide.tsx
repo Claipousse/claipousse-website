@@ -11,25 +11,32 @@ interface MobileSlideProps {
 
 export default function MobileSlide({ title, children, isOpen, onClose }: MobileSlideProps) {
   const [isClosing, setIsClosing] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   //handle close with animation
   const handleClose = () => {
     const closeSound = new Audio('/sfx/close.mp3');
-    closeSound.volume = 0.4;
+    closeSound.volume = 0.3;
     closeSound.play();
     setIsClosing(true);
     setTimeout(() => {
       onClose();
       setIsClosing(false);
-    }, 300); //300ms of animation
+      setIsAnimating(false);
+    }, 300); //300ms = durée de l'animation
   };
 
-  //play open sound when slide appears
+  //play open sound when slide appears + start animation
   useEffect(() => {
     if (isOpen) {
       const openSound = new Audio('/sfx/open.mp3');
-      openSound.volume = 0.4;
+      openSound.volume = 0.3;
       openSound.play();
+      
+      //start animation after a tiny delay to ensure initial state is set
+      setTimeout(() => {
+        setIsAnimating(true);
+      }, 10);
     }
   }, [isOpen]);
 
@@ -37,9 +44,9 @@ export default function MobileSlide({ title, children, isOpen, onClose }: Mobile
 
   return (
     <>
-      {/*dark overlay behind*/}
+      {/* dark overlay (non-clickable) - z-index > cats (50) */}
       <div 
-        className="fixed inset-0 bg-black z-40"
+        className="fixed inset-0 bg-black z-[60]"
         style={{
           opacity: isClosing ? 0 : 0.5,
           transition: 'opacity 0.3s ease-out',
@@ -47,14 +54,14 @@ export default function MobileSlide({ title, children, isOpen, onClose }: Mobile
         }}
       />
 
-      {/*slide container*/}
+      {/* slide container - z-index > cats (50) */}
       <div
-        className="fixed inset-x-0 bottom-0 z-50 bg-white flex flex-col"
+        className="fixed inset-x-0 bottom-0 z-[70] bg-white flex flex-col"
         style={{
           maxHeight: 'calc(100vh - 5rem)',
           borderTopLeftRadius: '1rem',
           borderTopRightRadius: '1rem',
-          transform: isClosing ? 'translateY(100%)' : 'translateY(0)',
+          transform: isClosing || !isAnimating ? 'translateY(100%)' : 'translateY(0)',
           transition: 'transform 0.3s ease-out'
         }}
       >
