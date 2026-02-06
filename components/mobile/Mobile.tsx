@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import MobileSlide from './MobileSlide';
-import WindowAbout from './WindowAbout';
+import WindowAbout from '../WindowAbout';
 import MobileLinks from './MobileLinks';
 import MobileWork from './MobileWork';
 import MobileFaq from './MobileFaq';

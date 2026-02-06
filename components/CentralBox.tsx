@@ -2,8 +2,8 @@
 
 import Niko from './Niko';
 import Music from './Music';
-import Desktop from './Desktop';
-import Mobile from './Mobile';
+import Desktop from './desktop/Desktop';
+import Mobile from './mobile/Mobile';
 import { useExternalLinkClick } from '@/hooks/useExternalLinkClick';
 
 export default function CentralBox() {

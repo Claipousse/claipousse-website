@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Mewo from './Mewo';
 import Window from './Window';
-import WindowAbout from './WindowAbout';
+import WindowAbout from '../WindowAbout';
 import WindowLinks from './WindowLinks';
 import WindowWork from './WindowWork';
 import WindowFaq from './WindowFaq';
