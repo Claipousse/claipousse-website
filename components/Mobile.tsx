@@ -5,7 +5,7 @@ import Image from 'next/image';
 import MobileSlide from './MobileSlide';
 import WindowAbout from './WindowAbout';
 import MobileLinks from './MobileLinks';
-import WindowWork from './WindowWork';
+import MobileWork from './MobileWork';
 import WindowFaq from './WindowFaq';
 
 type SlideType = 'about' | 'links' | 'work' | 'faq' | null;
@@ -35,7 +35,7 @@ export default function MobileView() {
         switch (type) {
             case 'about': return <WindowAbout />;
             case 'links': return <MobileLinks />;
-            case 'work': return <WindowWork />;
+            case 'work': return <MobileWork />;
             case 'faq': return <WindowFaq />;
             default: return null;
         }
