@@ -6,7 +6,7 @@ import MobileSlide from './MobileSlide';
 import WindowAbout from './WindowAbout';
 import MobileLinks from './MobileLinks';
 import MobileWork from './MobileWork';
-import WindowFaq from './WindowFaq';
+import MobileFaq from './MobileFaq';
 
 type SlideType = 'about' | 'links' | 'work' | 'faq' | null;
 
@@ -36,7 +36,7 @@ export default function MobileView() {
             case 'about': return <WindowAbout />;
             case 'links': return <MobileLinks />;
             case 'work': return <MobileWork />;
-            case 'faq': return <WindowFaq />;
+            case 'faq': return <MobileFaq />;
             default: return null;
         }
     };
