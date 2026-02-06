@@ -58,7 +58,7 @@ export default function MobileSlide({ title, children, isOpen, onClose }: Mobile
       <div
         className="fixed inset-x-0 bottom-0 z-[70] bg-white flex flex-col"
         style={{
-          maxHeight: 'calc(100vh - 5rem)',
+          height: 'calc(100vh - 5rem)',
           borderTopLeftRadius: '1rem',
           borderTopRightRadius: '1rem',
           transform: isClosing || !isAnimating ? 'translateY(100%)' : 'translateY(0)',
