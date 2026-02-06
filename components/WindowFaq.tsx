@@ -11,7 +11,7 @@ interface FAQItem {
 const FAQ_DATA: FAQItem[] = [
   {
     id: 1,
-    question: "what ressources did you use for this website ?",
+    question: "what ressources & inspirations did you use for this website ?",
     points: [
       "icons are from <a href='https://icons8.com' target='_blank'>icons8.com</a>",
       "sfx are either from <a href='https://www.zapsplat.com/' target='_blank'>zapsplat.com</a> or <a href='https://sounds.spriters-resource.com/pc_computer/oneshotsteamversion/asset/416943/' target='_blank'>oneshot's sfx</a>",
@@ -22,7 +22,7 @@ const FAQ_DATA: FAQItem[] = [
   },
   {
     id: 2,
-    question: "what stack did you use to this website ?",
+    question: "what langages did you use to this website ?",
     points: [
       "i used react, next.js and tailwind to make this website",
       "to make the windows movable, i used the react-draggable library."
@@ -74,111 +74,124 @@ export default function WindowFaq() {
     <div className="window-content">
       {/* faq list */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        {FAQ_DATA.map((item) => (
-          <div key={item.id}>
-            {/* question bar */}
-            <div
-              onClick={() => toggleItem(item.id)}
+        {FAQ_DATA.map((item) => {
+          const isOpen = openItems.includes(item.id);
+          
+          return (
+            <div 
+              key={item.id}
               style={{
-                backgroundColor: '#e2d3ff',
-                padding: '0.75rem 1.25rem',
-                cursor: 'pointer',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                transition: 'all 0.2s ease',
-                borderRadius: '4px',
-                position: 'relative',
-                zIndex: 2
-              }}
-            >
-              <span
-                style={{
-                  fontSize: 'clamp(0.75rem, 1.2vw, 0.875rem)',
-                  fontFamily: 'var(--font-mono)',
-                  fontWeight: 700,
-                  color: '#424242'
-                }}
-              >
-                {item.question}
-              </span>
-              <span
-                style={{
-                  fontSize: '1.25rem',
-                  color: '#424242',
-                  transition: 'transform 0.3s ease',
-                  transform: openItems.includes(item.id) ? 'rotate(180deg)' : 'rotate(0deg)'
-                }}
-              >
-                ^
-              </span>
-            </div>
-
-            {/* answer content*/}
-            <div
-              style={{
-                maxHeight: openItems.includes(item.id) ? '500px' : '0',
+                display: 'grid',
+                gridTemplateRows: isOpen ? 'max-content 1fr' : 'max-content 0fr',
+                transition: 'grid-template-rows 0.2s ease-out',
                 overflow: 'hidden',
-                transition: 'max-height 0.15s linear, padding 0.15s linear, border-width 0.15s linear',
-                backgroundColor: '#ffffff',
-                padding: openItems.includes(item.id) ? '1rem 1.25rem' : '0 1.25rem',
-                borderRadius: '6px',
-                marginTop: '-7px',
-                borderWidth: openItems.includes(item.id) ? '2px' : '0px',
-                borderStyle: 'solid',
-                borderColor: '#e2d3ff',
-                position: 'relative',
-                zIndex: 1,
-                boxSizing: 'border-box'
+                borderRadius: '6px'
               }}
             >
-              <ul
+              {/* question bar */}
+              <div
+                onClick={() => toggleItem(item.id)}
                 style={{
-                  listStyle: 'none',
-                  padding: 0,
-                  margin: 0,
+                  backgroundColor: '#e2d3ff',
+                  padding: '0.75rem 1.25rem',
+                  cursor: 'pointer',
                   display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.35rem'
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  transition: 'background-color 0.2s ease-out',
+                  borderRadius: '6px',
+                  position:'relative',
+                  zIndex:'2'
                 }}
               >
-                {item.points.map((point, idx) => (
-                  <li
-                    key={idx}
+                <span
+                  style={{
+                    fontSize: 'clamp(0.75rem, 1.2vw, 0.875rem)',
+                    fontFamily: 'var(--font-mono)',
+                    fontWeight: 700,
+                    color: '#424242'
+                  }}
+                >
+                  {item.question}
+                </span>
+                <span
+                  style={{
+                    fontSize: '1.25rem',
+                    color: '#424242',
+                    transition: 'transform 0.2s ease-out',
+                    transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)'
+                  }}
+                >
+                  ^
+                </span>
+              </div>
+
+              {/* answer content */}
+              <div style={{ minHeight: 0 }}>
+                <div
+                  style={{
+                    padding: isOpen ? '1rem 1.25rem' : '0 1.25rem',
+                    marginTop:isOpen ? '-7px': '0px',
+                    transition: 'padding 0.2s ease-out, border-width 0.2s ease-out',
+                    backgroundColor: '#ffffff',
+                    borderWidth: isOpen ? '2px' : '0px',
+                    borderStyle: 'solid',
+                    borderColor: '#e2d3ff',
+                    borderRadius: '6px',
+                    boxSizing: 'border-box',
+                    position:'relative',
+                    zIndex:'1'
+                  }}
+                >
+                  <ul
                     style={{
+                      listStyle: 'none',
+                      padding: 0,
+                      margin: 0,
                       display: 'flex',
-                      alignItems: 'flex-start',
-                      gap: '0.75rem'
+                      flexDirection: 'column',
+                      gap: '0.35rem'
                     }}
                   >
-                    {/* round bullet */}
-                    <span
-                      style={{
-                        width: '6px',
-                        height: '6px',
-                        backgroundColor: '#424242',
-                        borderRadius: '50%',
-                        marginTop: '0.45rem',
-                        flexShrink: 0
-                      }}
-                    />
-                    <span
-                      style={{
-                        fontSize: 'clamp(0.7rem, 1vw, 0.8rem)',
-                        lineHeight: '1.5',
-                        fontFamily: 'var(--font-mono)',
-                        color: '#424242',
-                        wordWrap: 'break-word',
-                        overflowWrap: 'break-word'
-                      }}
-                      dangerouslySetInnerHTML={{__html: point}}
-                    />
-                  </li>
-                ))}
-              </ul>
+                    {item.points.map((point, idx) => (
+                      <li
+                        key={idx}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: '0.75rem'
+                        }}
+                      >
+                        {/* round bullet */}
+                        <span
+                          style={{
+                            width: '6px',
+                            height: '6px',
+                            backgroundColor: '#424242',
+                            borderRadius: '50%',
+                            marginTop: '0.45rem',
+                            flexShrink: 0
+                          }}
+                        />
+                        <span
+                          style={{
+                            fontSize: 'clamp(0.7rem, 1vw, 0.8rem)',
+                            lineHeight: '1.5',
+                            fontFamily: 'var(--font-mono)',
+                            color: '#424242',
+                            wordWrap: 'break-word',
+                            overflowWrap: 'break-word'
+                          }}
+                          dangerouslySetInnerHTML={{__html: point}}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

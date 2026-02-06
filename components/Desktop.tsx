@@ -37,7 +37,7 @@ const WINDOW_SIZES = {
     faq: {
         maxWidth: 'clamp(550px, 55vw, 700px)',
         minWidth: '550px',
-        maxHeight: '43vh'
+        maxHeight: '450px'
     }
 };
 
