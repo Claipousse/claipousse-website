@@ -43,7 +43,7 @@ export default function MobileView() {
 
     return (
         <>
-            <div className="min-h-screen flex flex-col items-center justify-center p-4 pb-24 relative z-10">
+            <div className="min-h-screen flex flex-col items-center justify-center p-4 pb-24 relative z-10 overflow-hidden">
 
                 {/* top text centered with white outline */}
                 <div className="text-center mb-8">
