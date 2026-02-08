@@ -12,6 +12,7 @@
     "@fontsource-variable/roboto": "^5.2.9",
     "@fontsource-variable/roboto-mono": "^5.2.8",
     "@fontsource/zen-kaku-gothic-new": "^5.2.7",
+    "@vercel/analytics": "^1.6.1",
     "framer-motion": "^12.24.7",
     "next": "16.1.1",
     "react": "19.2.3",
