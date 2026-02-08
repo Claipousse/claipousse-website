@@ -4,7 +4,11 @@ import "@fontsource-variable/roboto-mono";
 import "@fontsource/zen-kaku-gothic-new/500.css";
 import "@fontsource/zen-kaku-gothic-new/700.css";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
+
+//for tracking on vercel
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 
 export const metadata: Metadata = {
   title: "claipousse",
@@ -20,7 +24,8 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {children}
-        <Analytics />
+        <Analytics/>
+        <SpeedInsights/>
       </body>
     </html>
   );
