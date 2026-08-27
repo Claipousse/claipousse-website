@@ -8,6 +8,7 @@ import { TraductionsProvider } from "@/utils/traductions";
 import type { Locale } from "@/utils/traductions/locale";
 import Intro from "./Intro";
 import Detail from "@/components/gallery/Detail";
+import GalleryPreload from "@/components/gallery/GalleryPreload";
 import Fade from "@/components/mypc/Fade";
 import Boot from "@/components/mypc/Boot";
 import Desktop from "@/components/mypc/Desktop";
@@ -31,6 +32,7 @@ export default function HomeClient({ initialLocale }: { initialLocale: Locale })
               <Music />
               <Scene />
               <Detail />
+              <GalleryPreload />
               <PreloadTrigger />
               <Fade />
               <Boot />
