@@ -1,0 +1,61 @@
+.root {
+  width: calc(100% + 16px);
+  margin: 0 -8px;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.sectionTitle {
+  font-family: 'Grape Soda', monospace;
+  font-size: 33px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: #12141a;
+  text-align: left;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  margin: 0 0 24px;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.gridItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.gridImg {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  image-rendering: pixelated;
+  border: 1px solid #12141a;
+}
+
+.gridTitle {
+  font-family: 'Grape Soda', monospace;
+  font-size: 22px;
+  letter-spacing: 0.02em;
+  color: #12141a;
+  text-align: center;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "top_games": [
+    { "filename": "1persona5royal.webp", "title": "Persona 5 Royal" },
+    { "filename": "2oneshot.webp", "title": "OneShot" },
+    { "filename": "3omori.webp", "title": "Omori" },
+    { "filename": "4yumenikki.webp", "title": "Yume Nikki" },
+    { "filename": "5minecraft.webp", "title": "Minecraft" }
+  ],
+  "currently_playing": [
+    { "filename": "1p4g.webp", "title": "Persona 4 Golden", "description": "(i'm trying to finish it before revival)" },
+    { "filename": "2sonicadventure2.webp", "title": "Sonic Adventure 2" },
+    { "filename": "3dofus.webp", "title": "Dofus" },
+    { "filename": "4lol.webp", "title": "League of Legends", "description": "(feel like a fent addict who keeps playing it even if i know it's awful for my mental sanity)" },
+    { "filename": "5ow.webp", "title": "Overwatch" }
+  ],
+  "other": [
+    { "filename": "01katanazero.webp", "title": "Katana Zero" },
+    { "filename": "02eastward.webp", "title": "Eastward" },
+    { "filename": "03pvzgw2.webp", "title": "PvZ: Garden Warfare 2" },
+    { "filename": "04raymanlegends.webp", "title": "Rayman Legends" },
+    { "filename": "05cyberpunk.webp", "title": "Cyberpunk 2077" },
+    { "filename": "06fear&hunger.webp", "title": "Fear & Hunger" },
+    { "filename": "07fear&hunger2.webp", "title": "Fear & Hunger 2: Termina" },
+    { "filename": "08mhwilds.webp", "title": "Monster Hunter Wilds" },
+    { "filename": "09inscryption.webp", "title": "Inscryption" },
+    { "filename": "10ultrakill.webp", "title": "Ultrakill" },
+    { "filename": "11sallyface.webp", "title": "Sally Face" },
+    { "filename": "12portal.webp", "title": "Portal" },
+    { "filename": "13portal2.webp", "title": "Portal 2" },
+    { "filename": "14celeste.webp", "title": "Celeste" },
+    { "filename": "15raft.webp", "title": "Raft" },
+    { "filename": "16novalands.webp", "title": "Nova Lands" },
+    { "filename": "17hotlinemiami.webp", "title": "Hotline Miami" },
+    { "filename": "18brotato.webp", "title": "Brotato" },
+    { "filename": "19slimerancher.webp", "title": "Slime Rancher" },
+    { "filename": "20cultofthelamb.webp", "title": "Cult of the Lamb" }
+  ]
+}

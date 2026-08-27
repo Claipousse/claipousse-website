@@ -1,0 +1,220 @@
+.desktop {
+  --icon-size: clamp(96px, 16.8vmin, 200px);
+  --taskbar-h: calc(var(--icon-size) * 0.525);
+  position: fixed;
+  inset: 0;
+  z-index: 46;
+  background: #12141a;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: var(--mypc-cursor-default, default);
+  user-select: none;
+  -webkit-user-select: none;
+  opacity: 1;
+  transition: opacity 0.5s steps(6, jump-end);
+}
+
+.desktop.closing {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.desktop.mobile {
+  --icon-size: clamp(52px, 20vmin, 96px);
+  --taskbar-h: 54px;
+}
+
+.iconGrid {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
+  gap: calc(var(--icon-size) * 0.325);
+  padding: calc(var(--icon-size) * 0.25);
+}
+
+.icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--icon-size) * 0.1);
+  width: calc(var(--icon-size) * 1.3125);
+  padding: calc(var(--icon-size) * 0.075) calc(var(--icon-size) * 0.05);
+  background: none;
+  border: none;
+  cursor: var(--mypc-cursor-pointer, pointer);
+}
+
+@media (hover: hover) {
+  .icon:hover {
+    background: rgba(242, 242, 242, 0.08);
+  }
+}
+
+.iconImg {
+  height: var(--icon-size);
+  width: auto;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 4px rgba(245, 245, 245, 0.2));
+}
+
+.iconLabel {
+  font-family: 'Grape Soda', monospace;
+  font-size: calc(var(--icon-size) * 0.1875);
+  letter-spacing: 0.04em;
+  color: #f2f2f2;
+  text-align: center;
+  text-shadow: 0 0 4px rgba(245, 245, 245, 0.35);
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+
+.mobile .iconGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(96px, 40vmin, 170px), 1fr));
+  justify-items: center;
+  align-content: start;
+  gap: 10px 6px;
+  padding: 14px 10px;
+}
+
+.mobile .icon {
+  flex-shrink: 0;
+  width: clamp(96px, 40vmin, 170px);
+  gap: 6px;
+  padding: 6px 4px;
+}
+
+.mobile .iconImg {
+  height: clamp(44px, min(20vmin, 9.3vh), 96px);
+}
+
+.mobile .iconLabel {
+  font-size: clamp(14px, 4.6vmin, 22px);
+}
+
+.taskbar {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  height: var(--taskbar-h);
+  display: flex;
+  align-items: center;
+  padding: 0 calc(var(--icon-size) * 0.15);
+  border-top: 2px solid #f2f2f2;
+  background: #12141a;
+}
+
+.mobile .taskbar {
+  padding: 0 14px;
+}
+
+.shutdown {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--icon-size) * 0.11);
+  font-family: 'Grape Soda', monospace;
+  font-size: calc(var(--icon-size) * 0.21);
+  letter-spacing: 0.04em;
+  color: #f2f2f2;
+  background: none;
+  border: none;
+  padding: 8px 4px;
+  cursor: var(--mypc-cursor-pointer, pointer);
+  opacity: 0.85;
+  transition: opacity 0.15s ease;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+
+@media (hover: hover) {
+  .shutdown:hover {
+    opacity: 1;
+  }
+}
+
+.mobile .shutdown {
+  gap: 13px;
+  font-size: 24px;
+}
+
+.powerIcon {
+  width: calc(var(--icon-size) * 0.24);
+  height: calc(var(--icon-size) * 0.24);
+  flex-shrink: 0;
+  image-rendering: pixelated;
+}
+
+.mobile .powerIcon {
+  width: 28px;
+  height: 28px;
+}
+
+.music {
+  position: relative;
+  margin-left: auto;
+  flex-shrink: 0;
+  width: calc(var(--icon-size) * 0.4);
+  height: calc(var(--icon-size) * 0.4);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: var(--mypc-cursor-pointer, pointer);
+  opacity: 0.85;
+  transition: opacity 0.15s ease;
+}
+
+.music:disabled {
+  cursor: var(--mypc-cursor-default, default);
+}
+
+@media (hover: hover) {
+  .music:hover {
+    opacity: 1;
+  }
+}
+
+.mobile .music {
+  width: 42px;
+  height: 42px;
+}
+
+.musicIcon {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  opacity: 0;
+}
+
+.musicIcon[data-active="true"] {
+  opacity: 1;
+}
+
+.scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.25) 0px,
+    rgba(0, 0, 0, 0.25) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: multiply;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+}

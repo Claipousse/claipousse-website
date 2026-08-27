@@ -1,0 +1,18 @@
+{
+  "id": "cooking",
+  "title": "Cooking",
+  "icon": "/3d/gallery/cooking.glb",
+  "photos": [
+    { "filename": "cookie1.webp", "description": "", "order": 3 },
+    { "filename": "cookie2.webp", "description": "", "order": 7 },
+    { "filename": "cordonbleu.webp", "description": "", "order": 11 },
+    { "filename": "cordonpate.webp", "description": "", "order": 1 },
+    { "filename": "crousty.webp", "description": "", "order": 9 },
+    { "filename": "gnocchi.webp", "description": "", "order": 4 },
+    { "filename": "katsu.webp", "description": "", "order": 8 },
+    { "filename": "onigiri.webp", "description": "", "order": 2 },
+    { "filename": "pate.webp", "description": "", "order": 6 },
+    { "filename": "sushi.webp", "description": "", "order": 10 },
+    { "filename": "wrap.webp", "description": "", "order": 5 }
+  ]
+}

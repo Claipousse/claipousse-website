@@ -1,0 +1,72 @@
+.root {
+  --width: clamp(58px, 6.5vw, 112px);
+  position: fixed;
+  top: clamp(2px, 0.5vw, 10px);
+  right: clamp(4px, 0.8vw, 16px);
+  z-index: 30;
+  width: var(--width);
+  height: calc(var(--width) * 261 / 355);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: none;
+  transition: transform 0.18s ease, opacity 0.8s ease;
+}
+
+.root.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.root:hover {
+  transform: scale(1.12);
+}
+
+.root:active {
+  transform: scale(0.94);
+}
+
+.root:disabled {
+  opacity: 0.5;
+}
+
+.note {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-size: 300% 100%;
+  background-position: 0% 0;
+  animation: boil 0.3s steps(3) infinite;
+  opacity: 0;
+  transition: opacity 0.12s linear;
+}
+
+.note[data-active="true"] {
+  opacity: 1;
+}
+
+.on {
+  background-image: url("/icons/music_on.webp");
+}
+
+.off {
+  background-image: url("/icons/music_off.webp");
+}
+
+@keyframes boil {
+  from {
+    background-position-x: 0%;
+  }
+  to {
+    background-position-x: 150%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .note {
+    animation: none;
+  }
+  .root:hover {
+    transform: none;
+  }
+}

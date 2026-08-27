@@ -1,0 +1,18 @@
+{
+  "id": "other",
+  "title": "Other",
+  "icon": "/3d/gallery/other.glb",
+  "photos": [
+    { "filename": "affiches1.webp", "description": "", "order": 8 },
+    { "filename": "affiches2.webp", "description": "", "order": 3 },
+    { "filename": "board.webp", "description": "", "order": 11 },
+    { "filename": "cafe2.webp", "description": "", "order": 6 },
+    { "filename": "cafe.webp", "description": "", "order": 1 },
+    { "filename": "dracaufeu.webp", "description": "", "order": 9 },
+    { "filename": "etagere.webp", "description": "", "order": 4 },
+    { "filename": "fiat.webp", "description": "", "order": 7 },
+    { "filename": "garfield.webp", "description": "", "order": 2 },
+    { "filename": "mangatheque.webp", "description": "", "order": 10 },
+    { "filename": "sticker.webp", "description": "", "order": 5 }
+  ]
+}

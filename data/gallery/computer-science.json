@@ -1,0 +1,17 @@
+{
+  "id": "computer-science",
+  "title": "Computer Science",
+  "icon": "/3d/gallery/computer-science.glb",
+  "photos": [
+    { "filename": "archinstall.webp", "description": "", "order": 7 },
+    { "filename": "cpufan_amd.webp", "description": "", "order": 3 },
+    { "filename": "mobo_salma.webp", "description": "", "order": 9 },
+    { "filename": "monpc.webp", "description": "", "order": 1 },
+    { "filename": "pc_paul.webp", "description": "", "order": 5 },
+    { "filename": "pc_raf.webp", "description": "", "order": 10 },
+    { "filename": "pc_salma.webp", "description": "", "order": 2 },
+    { "filename": "pc_usselia.webp", "description": "", "order": 8 },
+    { "filename": "raspberry1.webp", "description": "", "order": 4 },
+    { "filename": "raspberry2.webp", "description": "", "order": 6 }
+  ]
+}

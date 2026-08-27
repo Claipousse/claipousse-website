@@ -1,0 +1,16 @@
+{
+  "albums": [
+    { "filename": "01gorillaz.webp", "title": "Gorillaz" },
+    { "filename": "02demondays.webp", "title": "Demon Days" },
+    { "filename": "03plasticbeach.webp", "title": "Plastic Beach" },
+    { "filename": "04noneedforalarm.webp", "title": "No Need for Alarm" },
+    { "filename": "05modalsoul.webp", "title": "Modal Soul" },
+    { "filename": "06metaphoricalmusic.webp", "title": "Metaphorical Music" },
+    { "filename": "07departure.webp", "title": "Departure" },
+    { "filename": "08impression.webp", "title": "Impression" },
+    { "filename": "09eminemshow.webp", "title": "The Eminem Show" },
+    { "filename": "10marshallmatherslp.webp", "title": "The Marshall Mathers LP" },
+    { "filename": "11encore.webp", "title": "Encore" },
+    { "filename": "12wish.webp", "title": "Wish" }
+  ]
+}

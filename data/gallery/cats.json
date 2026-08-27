@@ -1,0 +1,17 @@
+{
+  "id": "cats",
+  "title": "My Cats",
+  "icon": "/3d/gallery/cats.glb",
+  "photos": [
+    { "filename": "iris.webp", "description": "", "order": 6 },
+    { "filename": "usselia_bras.webp", "description": "", "order": 2 },
+    { "filename": "usselia_cute.webp", "description": "", "order": 9 },
+    { "filename": "usselia_dodo2.webp", "description": "", "order": 4 },
+    { "filename": "usselia_dodo.webp", "description": "", "order": 7 },
+    { "filename": "usselia_grimace.webp", "description": "", "order": 1 },
+    { "filename": "usselia_iris_dodo1.webp", "description": "", "order": 10 },
+    { "filename": "usselia_iris_play.webp", "description": "", "order": 3 },
+    { "filename": "usselia_jardin.webp", "description": "", "order": 8 },
+    { "filename": "usselia_p5.webp", "description": "", "order": 5 }
+  ]
+}

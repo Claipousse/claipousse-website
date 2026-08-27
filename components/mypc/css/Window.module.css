@@ -1,0 +1,144 @@
+.window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(var(--icon-size) * 3);
+  max-height: 60vh;
+  background: #f2f2f2;
+  color: #12141a;
+  border: 2px solid #f2f2f2;
+  border-radius: 0;
+  box-shadow: 0 0 0 2px #12141a, 0px 5px 0px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.fullscreen {
+  right: 0;
+  bottom: var(--taskbar-h);
+  width: auto;
+  max-height: none;
+  box-shadow: none;
+}
+
+.titlebar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: calc(var(--icon-size) * 0.0625) calc(var(--icon-size) * 0.0875);
+  background: #12141a;
+  cursor: var(--mypc-cursor-move, move);
+  touch-action: none;
+  user-select: none;
+}
+
+.fullscreen .titlebar {
+  padding: 10px 14px;
+  cursor: var(--mypc-cursor-default, default);
+  touch-action: auto;
+}
+
+.title {
+  font-family: 'Grape Soda', monospace;
+  font-size: calc(var(--icon-size) * 0.1375);
+  letter-spacing: 0.04em;
+  color: #f2f2f2;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+
+.close {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Grape Soda', monospace;
+  font-size: calc(var(--icon-size) * 0.1875);
+  letter-spacing: 0.04em;
+  color: #f2f2f2;
+  background: none;
+  border: none;
+  padding: 8px;
+  margin: -8px;
+  cursor: var(--mypc-cursor-pointer, pointer);
+  opacity: 0.75;
+  transition: opacity 0.15s ease;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+
+@media (hover: hover) {
+  .close:hover {
+    opacity: 1;
+  }
+}
+
+.contentArea {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  overflow: hidden;
+  margin-top: -1px;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--icon-size) * 0.2);
+  scrollbar-width: none;
+}
+
+.content::-webkit-scrollbar {
+  display: none;
+}
+
+.fullscreen .content {
+  padding: 20px 16px;
+}
+
+.fullscreen .title {
+  font-size: 22px;
+}
+
+.fullscreen .close {
+  font-size: 30px;
+}
+
+.fullscreen .placeholder {
+  font-size: 26px;
+}
+
+.scrollTrack {
+  flex-shrink: 0;
+  position: relative;
+  width: 11px;
+  background: #e2e2e2;
+  border-left: 2px solid #12141a;
+}
+
+.scrollThumb {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: #12141a;
+  cursor: var(--mypc-cursor-pointer, pointer);
+}
+
+.placeholder {
+  font-family: 'Grape Soda', monospace;
+  font-size: calc(var(--icon-size) * 0.1625);
+  letter-spacing: 0.03em;
+  color: #12141a;
+  text-align: center;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}

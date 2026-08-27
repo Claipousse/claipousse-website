@@ -1,0 +1,54 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  cursor: auto;
+  touch-action: manipulation;
+  --bubble: radial-gradient(
+    circle var(--r, 0px) at var(--x, 50%) var(--y, 50%),
+    transparent calc(100% - 1px),
+    #000000 100%
+  );
+  -webkit-mask-image: var(--bubble);
+  mask-image: var(--bubble);
+}
+
+.root.opening {
+  pointer-events: none;
+}
+
+.message {
+  margin: 0;
+  padding: 0 1.5rem;
+  max-width: 22ch;
+  font-family: 'Grape Soda', sans-serif;
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 1.25;
+  color: #171717;
+  text-align: center;
+  text-wrap: balance;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+@media (min-width: 768px) {
+  .message {
+    max-width: min(40ch, 90vw);
+  }
+}
+
+.coarse {
+  display: none;
+}
+
+@media (pointer: coarse) {
+  .fine {
+    display: none;
+  }
+  .coarse {
+    display: inline;
+  }
+}

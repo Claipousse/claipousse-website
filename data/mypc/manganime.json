@@ -1,0 +1,15 @@
+{
+  "top10": [
+    { "filename": "01drstone.webp", "title": "Dr. Stone", "type": "anime", "malId": 62568 },
+    { "filename": "02lain.webp", "title": "Serial Experiments Lain", "type": "anime", "malId": 339 },
+    { "filename": "03dungeonmeshi.webp", "title": "Dungeon Meshi", "type": "anime", "malId": 52701 },
+    { "filename": "04deathnote.webp", "title": "Death Note", "type": "anime", "malId": 1535 },
+    { "filename": "05samuraichamploo.webp", "title": "Samurai Champloo", "type": "anime", "malId": 205 },
+    { "filename": "06hajimenoippo.webp", "title": "Hajime no Ippo", "type": "anime", "malId": 263 },
+    { "filename": "07monster.webp", "title": "Monster", "type": "anime", "malId": 19 },
+    { "filename": "08fmab.webp", "title": "Full Metal Alchemist", "type": "anime", "malId": 5114 },
+    { "filename": "09orb.webp", "title": "Orb", "type": "anime", "malId": 52215 },
+    { "filename": "10greatpretender.webp", "title": "Great Pretender", "type": "anime", "malId": 40052 }
+  ],
+  "extraExcludeMalIds": [38691, 40852, 50612, 48549, 55644, 57592, 19647, 5258]
+}

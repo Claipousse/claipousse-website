@@ -1,0 +1,28 @@
+.root {
+  --cu: clamp(4px, min(0.95vh, 2.1vw), 9px);
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--cu) * 1.6);
+  font-family: 'Grape Soda', monospace;
+  font-size: calc(var(--cu) * 2.45);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #12141a;
+  text-align: left;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+
+.title {
+  font-size: calc(var(--cu) * 3.2);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  text-decoration: underline;
+  text-underline-offset: calc(var(--cu) * 0.55);
+  margin: 0 0 calc(var(--cu) * 0.6);
+}
+
+.text {
+  margin: 0;
+}
