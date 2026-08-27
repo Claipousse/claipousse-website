@@ -13,6 +13,7 @@ import Fade from "@/components/mypc/Fade";
 import Boot from "@/components/mypc/Boot";
 import Desktop from "@/components/mypc/Desktop";
 import PreloadTrigger from "@/components/mypc/PreloadTrigger";
+import MyRoomPreloadTrigger from "@/components/myroom/PreloadTrigger";
 import Cursor from "./Cursor";
 import Music from "./Music";
 import WarningMobile from "./WarningMobile";
@@ -34,6 +35,7 @@ export default function HomeClient({ initialLocale }: { initialLocale: Locale })
               <Detail />
               <GalleryPreload />
               <PreloadTrigger />
+              <MyRoomPreloadTrigger />
               <Fade />
               <Boot />
               <Desktop />

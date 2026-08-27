@@ -39,18 +39,26 @@ export function fetchManganimeOnce(): Promise<ManganimeResponse> {
 
 //the order of the preload is depending on their order in the app and how quick we saw them, so first whats on bootscreen, then whats on desktop, then the content of the windows
 
-//step 1 = the image on the bootscreen, since its the first see we saw we want it first
+//step 1 = the image on the bootscreen and the cursors, since the idle one shows up the instant we see mypc, before anything else
 const BOOT_ICON_URL = "/mypc/icons/claipousse.webp";
+const CURSOR_IDLE_URL = "/mypc/cursors/default.png";
+const CURSOR_OTHER_URLS = ["/mypc/cursors/pointer.png", "/mypc/cursors/move.png", "/mypc/cursors/pen.png"];
 
-// step 2 = whats on the desktop (icons)
-const DESKTOP_ICON_IDS = ["aboutme", "game", "music", "manganime", "contact", "meowl", "todo", "credits", "help", "shutdown"];
+// step 2 = whats on the desktop (icons), the click sfx and draw icon show up right after the bootscreen too
+const DESKTOP_ICON_IDS = ["aboutme", "game", "music", "manganime", "draw", "contact", "meowl", "todo", "credits", "help", "shutdown"];
 const DESKTOP_ICON_URLS = DESKTOP_ICON_IDS.map((id) => `/mypc/icons/${id}.webp`);
+const CLICK_SOUND_URL = "/sound/mypc/click.mp3";
 
 // step 3 content of the windows
 const WINDOW_CONTENT_URLS: string[] = [
+  "/mypc/aboutme/me.webp",
+  "/mypc/aboutme/click.mp3",
   "/mypc/contact/frame1.gif",
   "/mypc/contact/frame2.gif",
   "/mypc/contact/mail.gif",
+  "/mypc/draw/eraser.gif",
+  "/mypc/draw/undo.gif",
+  "/mypc/draw/destroy.gif",
   "/mypc/meowl/meowl.webp",
   "/mypc/meowl/meowl.mp3",
   ...videogamesData.top_games.map((g) => `/mypc/videogames/top_games/${g.filename}`),
@@ -76,8 +84,9 @@ let assetsPreloaded = false;
 export function preloadAssets() {
   if (assetsPreloaded) return;
   assetsPreloaded = true;
-  Promise.all([document.fonts.load("16px 'Grape Soda'").catch(() => {}), warm(BOOT_ICON_URL)])
-    .then(() => warmAll(DESKTOP_ICON_URLS))
+  Promise.all([document.fonts.load("16px 'Grape Soda'").catch(() => {}), warm(CURSOR_IDLE_URL), warm(BOOT_ICON_URL)])
+    .then(() => warmAll(CURSOR_OTHER_URLS))
+    .then(() => warmAll([...DESKTOP_ICON_URLS, CLICK_SOUND_URL]))
     .then(() => {
       //its the slower thing so we do it the last not before
       fetchManganimeOnce().then(preloadMalImages).catch(() => {});
