@@ -1,0 +1,241 @@
+.button {
+  --width: clamp(58px, 6.5vw, 112px);
+  position: fixed;
+  top: clamp(2px, 0.5vw, 10px);
+  right: clamp(4px, 0.8vw, 16px);
+  z-index: 30;
+  width: var(--width);
+  height: var(--width);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: none;
+  transition: transform 0.18s ease, opacity 0.8s ease;
+}
+
+.button.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .button:hover {
+    transform: scale(1.12);
+  }
+}
+
+.icon {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-size: 300% 100%;
+  background-position: 0% 0;
+  animation: boil 0.3s steps(3) infinite;
+}
+
+.toggle {
+  opacity: 0;
+}
+
+.toggle[data-active="true"] {
+  opacity: 1;
+}
+
+.settings {
+  background-image: url("/icons/settings.webp");
+}
+
+.musicOn {
+  background-image: url("/icons/music_on.webp");
+}
+
+.musicOff {
+  background-image: url("/icons/music_off.webp");
+}
+
+.soundOn {
+  background-image: url("/icons/sound_on.webp");
+}
+
+.soundOff {
+  background-image: url("/icons/sound_off.webp");
+}
+
+.langFr {
+  background-image: url("/icons/fr.webp");
+}
+
+.langEn {
+  background-image: url("/icons/en.webp");
+}
+
+@keyframes boil {
+  from {
+    background-position-x: 0%;
+  }
+  to {
+    background-position-x: 150%;
+  }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 18, 35, 0.45);
+  cursor: none;
+  animation: fadeIn 0.18s ease;
+}
+
+.overlay.closing {
+  animation: fadeOut 0.18s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: clamp(20px, 3vw, 36px);
+  width: min(92vw, 520px);
+  background: #fff;
+  border: clamp(3px, 0.45vw, 6px) solid #8975ff;
+  border-radius: clamp(24px, 4vw, 44px);
+  padding: clamp(36px, 6vw, 64px) clamp(32px, 5.5vw, 56px);
+  animation: popIn 0.2s cubic-bezier(0.2, 0.9, 0.25, 1);
+}
+
+.closing .panel {
+  animation: popOut 0.18s ease forwards;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes popOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3.5vw, 36px);
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: none;
+}
+
+@media (hover: hover) {
+  .row:hover .iconWrap {
+    animation: wiggle 0.35s ease;
+  }
+  .row:hover .label {
+    color: #5136f0;
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-6deg);
+  }
+  75% {
+    transform: rotate(6deg);
+  }
+}
+
+.label {
+  font-family: "Grape Soda", monospace;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: #8975ff;
+}
+
+.iconWrap {
+  display: block;
+  position: relative;
+  width: clamp(80px, 11vw, 140px);
+  flex: 0 0 auto;
+}
+
+.iconWrap.music {
+  aspect-ratio: 355 / 261;
+}
+
+.iconWrap.sound {
+  aspect-ratio: 201 / 165;
+}
+
+.iconWrap.flag {
+  aspect-ratio: 154 / 131;
+}
+
+.closeBtn {
+  position: absolute;
+  top: clamp(10px, 1.4vw, 20px);
+  right: clamp(14px, 2.2vw, 26px);
+  width: clamp(28px, 3.2vw, 40px);
+  height: clamp(28px, 3.2vw, 40px);
+  border: 0;
+  background: none;
+  cursor: none;
+  color: #8975ff;
+  padding: 0;
+  transition: transform 0.18s ease;
+}
+
+.closeBtn svg {
+  width: 100%;
+  height: 100%;
+}
+
+@media (hover: hover) {
+  .closeBtn:hover {
+    transform: scale(1.15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon {
+    animation: none;
+  }
+}

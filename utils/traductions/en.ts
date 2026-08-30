@@ -77,6 +77,11 @@ export const en = {
   music: {
     albums: "albums i like",
   },
+  settings: {
+    music: "music",
+    sfx: "sfx",
+    language: "english",
+  },
   manganime: {
     favorites: "My favorites animes / mangas",
     currentlyWatching: "currently watching / reading",

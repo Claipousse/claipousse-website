@@ -78,6 +78,11 @@ export const fr: Dict = {
   music: {
     albums: "albums que j'aime",
   },
+  settings: {
+    music: "musique",
+    sfx: "sfx",
+    language: "français",
+  },
   manganime: {
     favorites: "mes animes / mangas préférés",
     currentlyWatching: "en cours de visionnage / lecture",

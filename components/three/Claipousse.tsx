@@ -7,6 +7,7 @@ import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import { isCoarsePointer } from "@/utils/deviceCapabilities";
 import { useIntro } from "@/utils/intro";
+import { isSfxOn } from "@/utils/sfx";
 
 const SOUND_COUNT = 14; //14 different sound possible when clicking
 const BACK_SPEED_BIAS = 0.7; //extra speed fraction when facing away, 0 when facing the camera
@@ -44,9 +45,11 @@ export default function Claipousse() {
     } while (index === lastSoundIndex.current);
     lastSoundIndex.current = index;
 
-    const audio = new Audio(sounds[index]);
-    audio.volume = 0.8;
-    audio.play().catch(() => {});
+    if (isSfxOn()) {
+      const audio = new Audio(sounds[index]);
+      audio.volume = 0.8;
+      audio.play().catch(() => {});
+    }
     //we go in the same direction of rotation, otherwise two opposite forces cancel
     const dir = vel.current.y + impulse.current.y >= 0 ? 1 : -1;
     impulse.current.y += dir * (18 + Math.random() * 6);

@@ -9,6 +9,7 @@ import { useNavigation } from "@/utils/navigation";
 import { useIntro } from "@/utils/intro";
 import { easeInOut } from "@/utils/animation";
 import { MYROOM_SPIN_DELAY, MYROOM_SPIN_DURATION, MYROOM_CLOSE_DURATION } from "@/utils/transitionTiming";
+import { isSfxOn } from "@/utils/sfx";
 
 const SFX_SRC = "/sound/myroom/spin.mp3";
 
@@ -48,7 +49,7 @@ export default function KeyAnimation({ path, rotation, scaleMult, phaseOffset, h
   const wasOpen = useRef(false);
 
   useEffect(() => {
-    if (!open) return;
+    if (!open || !isSfxOn()) return;
     const sound = new Audio(SFX_SRC);
     sound.volume = 0.55;
     let started: Promise<void> | undefined;

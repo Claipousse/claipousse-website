@@ -12,33 +12,6 @@
   opacity: 1;
 }
 
-.ping {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 3px solid white;
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 0;
-}
-
-.ping.appear {
-  animation: cursor-ping 0.7s ease-out forwards;
-}
-
-@keyframes cursor-ping {
-  0% {
-    transform: translate(-50%, -50%) scale(0.7);
-    opacity: 0.9;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(3);
-    opacity: 0;
-  }
-}
-
 .circle {
   position: absolute;
   top: 0;

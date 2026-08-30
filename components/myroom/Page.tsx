@@ -11,6 +11,7 @@ import { useNavigation } from "@/utils/navigation";
 import { easeInOut, HOVER_REST } from "@/utils/animation";
 import { MYROOM_SPIN_DELAY, MYROOM_SPIN_DURATION } from "@/utils/transitionTiming";
 import { useMyRoomLayout, worldToPixels, TITLE_CURVATURE, BODY_CURVATURE, BACK_FONT, GIF_SRC, GIF_ASPECT, SFX_SRC, FART_SFX_SRC, TITLE_TEXT, WIP_IMAGE_ALT, BACK_TEXT } from "./layout";
+import { isSfxOn } from "@/utils/sfx";
 import styles from "./css/Page.module.css";
 
 const SCALE_DURATION = 0.25; // exit = entry played backwards, all at once rather than spread over the whole camera move
@@ -22,7 +23,7 @@ const BUTT_HITZONE = { left: "13%", top: "67%", width: "30%", height: "18%" }; /
 //dunno when ill do the my room rn im pretty tired so maybe in several weeks its worth integrate it
 function ButtHitzone() {
   return (
-    <div onClick={() => new Audio(FART_SFX_SRC).play().catch(() => {})} style={{ position: "absolute", pointerEvents: "auto", ...BUTT_HITZONE }} />
+    <div onClick={() => { if (isSfxOn()) new Audio(FART_SFX_SRC).play().catch(() => {}); }} style={{ position: "absolute", pointerEvents: "auto", ...BUTT_HITZONE }} />
   );
 }
 
@@ -37,6 +38,7 @@ function Content() {
   const backBounce = useRef({ value: HOVER_REST });
 
   useEffect(() => {
+    if (!isSfxOn()) return;
     const sound = new Audio(SFX_SRC);
     sound.volume = 0.55;
     sound.play().catch(() => {});

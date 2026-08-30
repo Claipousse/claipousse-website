@@ -1,5 +1,7 @@
 //1 xylophone sample pitched into 6 notes via playbackrate, spawn gives each model its own note then hover cycles through the same 6
 "use client";
+import { isSfxOn } from "./sfx";
+
 const NOTE_SRC = "/sound/spawn3D.mp3";
 const NOTE_COUNT = 6;
 const RATE_START = 0.8;
@@ -9,6 +11,7 @@ let next = 0;
 let spawnedCount = 0; //notes played by the intro this gallery open, gates hover so it doesnt overlap the intro
 
 function playNote(i: number) {
+  if (!isSfxOn()) return;
   const audio = new Audio(NOTE_SRC);
   audio.preservesPitch = false; //without this the browser auto-corrects pitch back, rate would only change speed
   audio.playbackRate = RATE_START + i * RATE_STEP;

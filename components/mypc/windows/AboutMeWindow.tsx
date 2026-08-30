@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { useT } from "@/utils/traductions";
+import { isSfxOn } from "@/utils/sfx";
 import styles from "./css/AboutMeWindow.module.css";
 
 const SPIN_DURATION = 1500;
@@ -29,7 +30,7 @@ export default function AboutMeWindow() {
     if (locked.current) return;
     locked.current = true;
     setSpinning(true);
-    new Audio("/mypc/aboutme/click.mp3").play().catch(() => {});
+    if (isSfxOn()) new Audio("/mypc/aboutme/click.mp3").play().catch(() => {});
     timers.current = [
       window.setTimeout(() => setSpinning(false), SPIN_DURATION),
       window.setTimeout(() => {

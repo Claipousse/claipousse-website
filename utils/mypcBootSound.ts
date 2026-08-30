@@ -5,6 +5,7 @@
 
 import { BOOT_DELAY } from "./transitionTiming";
 import { LOGIN_DURATION } from "@/components/mypc/Boot";
+import { isSfxOn } from "./sfx";
 
 //path of sfx
 const PC_ON_URL = "/sound/mypc/pc_on.ogg";
@@ -34,6 +35,7 @@ function loadBuffer(context: AudioContext, url: string): Promise<AudioBuffer> {
 }
 
 export function playMyPcBootSound(): () => void {
+  if (!isSfxOn()) return () => {};
   const context = getContext();
   if (context.state !== "running") void context.resume();
   void loadBuffer(context, PC_OFF_URL);
@@ -83,6 +85,7 @@ export function playMyPcBootSound(): () => void {
   };
 }
 export function playMyPcShutdownSound() {
+  if (!isSfxOn()) return;
   const context = getContext();
   if (context.state !== "running") void context.resume();
 

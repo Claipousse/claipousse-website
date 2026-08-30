@@ -15,6 +15,7 @@ import { useNavigation } from "@/utils/navigation";
 import { useIntro } from "@/utils/intro";
 import { useT } from "@/utils/traductions";
 import { playMenuSpawnNote, playMenuHoverNote } from "@/utils/menuNoteSound";
+import { isSfxOn } from "@/utils/sfx";
 import { isCoarsePointer } from "@/utils/deviceCapabilities";
 import { HOVER_REST } from "@/utils/animation";
 import { CENTER_DELAY, CORNER_DELAY, CORNER_STAGGER } from "@/utils/introTiming";
@@ -82,7 +83,7 @@ export default function MainMenu({ mypcCapturedQuaternion }: Props) {
     <>
       <group position={[0, layout.avatarY, 0]}>
         <FadeTransition>
-          <Spawn delay={CENTER_DELAY} spin onSpawn={() => new Audio(CENTER_SFX_SRC).play().catch(() => {})}>
+          <Spawn delay={CENTER_DELAY} spin onSpawn={() => { if (isSfxOn()) new Audio(CENTER_SFX_SRC).play().catch(() => {}); }}>
             <group scale={layout.avatarScale}>
               <Claipousse />
             </group>

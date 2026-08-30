@@ -51,7 +51,6 @@ export default function Cursor() {
       ref={rootRef}
       className={`${styles.root} ${visible && interactive && !osCursor ? styles.visible : ""} ${hovered ? styles.hovered : ""}`}
     >
-      <div className={`${styles.ping} ${interactive ? styles.appear : ""}`} />
       <div className={styles.circle} />
       <span className={styles.mark}>?</span>
     </div>

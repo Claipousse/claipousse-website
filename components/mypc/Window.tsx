@@ -6,6 +6,7 @@
  * longer draggable.
  */
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { isSfxOn } from "@/utils/sfx";
 import styles from "./css/Window.module.css";
 
 const EDGE_MARGIN = 8;
@@ -244,7 +245,7 @@ export default function Window({
           className={styles.close}
           onClick={(e) => {
             e.stopPropagation();
-            new Audio("/sound/mypc/click.mp3").play().catch(() => {});
+            if (isSfxOn()) new Audio("/sound/mypc/click.mp3").play().catch(() => {});
             onClose();
           }}
         >

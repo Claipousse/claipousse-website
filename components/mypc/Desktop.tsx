@@ -6,6 +6,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigation } from "@/utils/navigation";
 import { useDeviceTier } from "@/utils/deviceCapabilities";
 import { useBackgroundMusic } from "@/utils/backgroundMusic";
+import { isSfxOn } from "@/utils/sfx";
 import { useT } from "@/utils/traductions";
 import type { Dict } from "@/utils/traductions/en";
 import { LOGIN_DURATION } from "./Boot";
@@ -136,7 +137,7 @@ export default function Desktop() {
 
   //one listener for all the sound for clicking buttons, links, etc rather than everyone having their own, only closing is exception
   const playClickSfx = (e: React.MouseEvent<HTMLDivElement>) => {
-    if ((e.target as HTMLElement).closest("button, a[href]")) {
+    if (isSfxOn() && (e.target as HTMLElement).closest("button, a[href]")) {
       new Audio("/sound/mypc/click.mp3").play().catch(() => {});
     }
   };

@@ -15,7 +15,7 @@ import Desktop from "@/components/mypc/Desktop";
 import PreloadTrigger from "@/components/mypc/PreloadTrigger";
 import MyRoomPreloadTrigger from "@/components/myroom/PreloadTrigger";
 import Cursor from "./Cursor";
-import Music from "./Music";
+import Settings from "./Settings";
 import WarningMobile from "./WarningMobile";
 import BackgroundVideo from "./BackgroundVideo";
 
@@ -30,7 +30,7 @@ export default function HomeClient({ initialLocale }: { initialLocale: Locale })
             <main className="w-screen h-dvh">
               <BackgroundVideo />
               <Cursor />
-              <Music />
+              <Settings />
               <Scene />
               <Detail />
               <GalleryPreload />
