@@ -7,7 +7,7 @@ import * as THREE from "three";
 import Model3D from "../three/3DModel";
 import HoverText from "../three/HoverText";
 import { integrateSpring, BOUNCE_STIFFNESS, BOUNCE_DAMPING, HOVER_REST } from "@/utils/animation";
-import { playGallerySpawnNote, playGalleryHoverNote } from "@/utils/galleryNoteSound";
+import { playGallerySpawnNote } from "@/utils/galleryNoteSound";
 
 export const GALLERY_SPAWN_STAGGER = 0.18; //time between 2 spawn
 const SPIN_TURNS = 1;
@@ -79,7 +79,7 @@ export default function GallerySpawn({ path, wx, wy, wz, rotation, scaleMult, te
       <group position={[wx, wy, wz]}>
         <group ref={modelSpawnRef} scale={0}>
           <group rotation={rotation}>
-            <Model3D path={path} position={[0, 0, 0]} scaleMult={scaleMult} phaseOffset={phaseOffset} onClick={onClick} bounceHover bounceStrength={bounceStrength} hoverBounce={hoverBounce} onHoverStart={playGalleryHoverNote} />
+            <Model3D path={path} position={[0, 0, 0]} scaleMult={scaleMult} phaseOffset={phaseOffset} onClick={onClick} bounceHover bounceStrength={bounceStrength} hoverBounce={hoverBounce} />
           </group>
         </group>
       </group>

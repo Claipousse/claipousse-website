@@ -14,7 +14,7 @@ import { LINKS_MODEL_PATH } from "../links/layout";
 import { useNavigation } from "@/utils/navigation";
 import { useIntro } from "@/utils/intro";
 import { useT } from "@/utils/traductions";
-import { playMenuSpawnNote, playMenuHoverNote } from "@/utils/menuNoteSound";
+import { playMenuSpawnNote } from "@/utils/menuNoteSound";
 import { isSfxOn } from "@/utils/sfx";
 import { isCoarsePointer } from "@/utils/deviceCapabilities";
 import { HOVER_REST } from "@/utils/animation";
@@ -112,7 +112,7 @@ export default function MainMenu({ mypcCapturedQuaternion }: Props) {
           <group position={position}>
             <Spawn delay={spawnDelay} spin onSpawn={() => playMenuSpawnNote(spawnIndex)}>
               {id === "links" ? (
-                <Setup phaseOffset={spawnIndex * 1.3} hoverBounce={hoverBounce(id)} onHoverStart={playMenuHoverNote} />
+                <Setup phaseOffset={spawnIndex * 1.3} hoverBounce={hoverBounce(id)} />
               ) : id === "myroom" ? (
                 <FadeTransition forceVisible={cameraTarget === "myroom" || cameraTarget === "myroom-closing"}>
                   <KeyAnimation
@@ -122,7 +122,6 @@ export default function MainMenu({ mypcCapturedQuaternion }: Props) {
                     phaseOffset={spawnIndex * 1.3}
                     hoverBounce={hoverBounce(id)}
                     coarse={coarse}
-                    onHoverStart={playMenuHoverNote}
                   />
                 </FadeTransition>
               ) : (
@@ -146,7 +145,6 @@ export default function MainMenu({ mypcCapturedQuaternion }: Props) {
                     bounceHover
                     noHoverEffect={!interactive || coarse || (id === "gallery" && view !== "menu")}
                     hoverBounce={hoverBounce(id)}
-                    onHoverStart={playMenuHoverNote}
                   />
                 </FadeTransition>
               )}
