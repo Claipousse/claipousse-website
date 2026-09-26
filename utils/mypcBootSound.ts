@@ -6,6 +6,7 @@
 import { BOOT_DELAY } from "./transitionTiming";
 import { LOGIN_DURATION } from "@/components/mypc/Boot";
 import { isSfxOn } from "./sfx";
+import { getSharedAudioContext } from "./sharedAudioContext";
 
 //path of sfx
 const PC_ON_URL = "/sound/mypc/pc_on.ogg";
@@ -15,13 +16,7 @@ const PC_OFF_URL = "/sound/mypc/pc_off.ogg";
 
 export const PC_LOGON_DURATION = 2;
 
-let ctx: AudioContext | null = null;
 const bufferCache = new Map<string, Promise<AudioBuffer>>();
-
-function getContext(): AudioContext {
-  if (!ctx) ctx = new AudioContext();
-  return ctx;
-}
 
 function loadBuffer(context: AudioContext, url: string): Promise<AudioBuffer> {
   let promise = bufferCache.get(url);
@@ -36,7 +31,7 @@ function loadBuffer(context: AudioContext, url: string): Promise<AudioBuffer> {
 
 export function playMyPcBootSound(): () => void {
   if (!isSfxOn()) return () => {};
-  const context = getContext();
+  const context = getSharedAudioContext();
   if (context.state !== "running") void context.resume();
   void loadBuffer(context, PC_OFF_URL);
   //same origin as boot_delay constant is mesured, for the sfx to start playing at the right time
@@ -86,7 +81,7 @@ export function playMyPcBootSound(): () => void {
 }
 export function playMyPcShutdownSound() {
   if (!isSfxOn()) return;
-  const context = getContext();
+  const context = getSharedAudioContext();
   if (context.state !== "running") void context.resume();
 
   loadBuffer(context, PC_OFF_URL).then((pcOff) => {

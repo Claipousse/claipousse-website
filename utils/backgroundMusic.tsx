@@ -7,6 +7,7 @@ import { useNavigation } from "./navigation";
 import { useMyPcScreenShowing } from "./mypcScreen";
 import { LOGIN_DURATION } from "@/components/mypc/Boot";
 import { PC_LOGON_DURATION } from "./mypcBootSound";
+import { getSharedAudioContext } from "./sharedAudioContext";
 import { BOOT_DELAY, CLOSE_FADE_DURATION, MYPC_RETURN_DURATION } from "./transitionTiming";
 
 const TRACKS = { //loopend based on the lengh of each musics
@@ -19,6 +20,7 @@ type TrackId = keyof typeof TRACKS;
 // music in my pc only play when the intro si done
 const MYPC_DELAY = BOOT_DELAY + LOGIN_DURATION + PC_LOGON_DURATION;
 const FADE = 0.25;
+const LOOP_LOOKAHEAD = 0.25; //schedule the next loop segment this long before the current one ends
 export const MUSIC_STORAGE_KEY = "bgm"; //memorise if music on/off
 
 // we try to put the on/off value in localstorage, if not possible (ex: private navigation) we handle the error
@@ -78,6 +80,7 @@ export function BackgroundMusicProvider({ children }: { children: ReactNode }) {
   const buffersRef = useRef<Partial<Record<TrackId, AudioBuffer>>>({});
   const gainsRef = useRef<Partial<Record<TrackId, GainNode>>>({});
   const sourcesRef = useRef<Partial<Record<TrackId, AudioBufferSourceNode>>>({});
+  const loopTimersRef = useRef<Partial<Record<TrackId, ReturnType<typeof setTimeout>>>>({});
   const suspendTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const wasDucked = useRef(ducked);
   const instantStart = useRef(false);
@@ -102,26 +105,41 @@ export function BackgroundMusicProvider({ children }: { children: ReactNode }) {
     setLoaded((n) => n + 1);
   }, []);
 
+  //native loop/loopEnd looping glitches into a stuck beep after a while on these opus-decoded buffers (browser bug on the loop wraparound)
+  //so instead we loop manually, chaining one-shot segments back to back and scheduling the next one a bit ahead of time
+  const scheduleSegment = useCallback((ctx: AudioContext, id: TrackId, gain: GainNode, buffer: AudioBuffer, when: number) => {
+    const source = ctx.createBufferSource();
+    source.buffer = buffer;
+    source.connect(gain);
+    source.start(when);
+    sourcesRef.current[id] = source;
+
+    const delay = Math.max(0, when + TRACKS[id].loopEnd - LOOP_LOOKAHEAD - ctx.currentTime) * 1000;
+    loopTimersRef.current[id] = setTimeout(() => {
+      scheduleSegment(ctx, id, gain, buffer, when + TRACKS[id].loopEnd);
+    }, delay);
+  }, []);
+
   const start = useCallback((ctx: AudioContext, id: TrackId) => {
     const buffer = buffersRef.current[id];
     if (!buffer || sourcesRef.current[id]) return;
     const gain = ctx.createGain();
     gain.gain.value = 0;
-    const source = ctx.createBufferSource();
-    source.buffer = buffer;
-    source.loop = true;
-    source.loopEnd = TRACKS[id].loopEnd;
-    source.connect(gain).connect(ctx.destination);
-    source.start();
+    gain.connect(ctx.destination);
     gainsRef.current[id] = gain;
-    sourcesRef.current[id] = source;
-  }, []);
+    scheduleSegment(ctx, id, gain, buffer, ctx.currentTime);
+  }, [scheduleSegment]);
 
   const stop = useCallback((id: TrackId, seconds: number) => {
     const ctx = ctxRef.current;
     const source = sourcesRef.current[id];
     if (!ctx || !source) return;
-    source.stop(ctx.currentTime + seconds);
+    const timer = loopTimersRef.current[id];
+    if (timer) clearTimeout(timer);
+    loopTimersRef.current[id] = undefined;
+    try {
+      source.stop(ctx.currentTime + seconds);
+    } catch {}
     sourcesRef.current[id] = undefined;
     gainsRef.current[id] = undefined;
   }, []);
@@ -165,7 +183,7 @@ export function BackgroundMusicProvider({ children }: { children: ReactNode }) {
 
     let ctx: AudioContext;
     try {
-      ctx = new AudioContext();
+      ctx = getSharedAudioContext();
       void ctx.resume();
     } catch {
       setLoading(false);
